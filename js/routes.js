@@ -8,6 +8,8 @@ import emailList from './apps/mister-email/cmps/emails-list.cmp.js'
 import emailDetails from  './apps/mister-email/pages/email-details.cmp.js'
 
 
+import keepApp from './apps/miss-keep/pages/keep-app.cmp.js'
+
 const myRoutes = [
     {
         path: '/book',
@@ -33,7 +35,7 @@ const myRoutes = [
     },
     {
         path: '/notes',
-        component: bookApp
+        component: keepApp
     }
 
 

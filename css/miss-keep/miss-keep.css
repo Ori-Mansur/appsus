@@ -1,0 +1,39 @@
+.add-note button{
+    height: 40px;
+    width: 40px;
+
+}
+.add-note img{
+    height: 80%;
+}
+.add-note input{
+    height: 40px;
+    border-radius: 0;
+}
+/* notes-preview */
+
+.notes-preview{
+    display: grid;
+    margin-left: 10px;
+    margin-right: 10px;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+}
+.img-note{
+    background-color: greenyellow;
+    
+}
+.video-note{
+    background-color: greenyellow;
+    border: 1px solid black;
+    padding:5px;
+    padding-bottom: 20px;
+    max-width: fit-content;
+}
+.text-note{
+    min-height: 50px;
+    background-color: greenyellow;
+    border: 1px solid black;
+
+
+}
