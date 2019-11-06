@@ -14,6 +14,14 @@ const myRoutes = [
         path: '/book/:bookId',
         component: bookDetails
     },
+    {
+        path: '/email',
+        component: bookApp
+    },
+    {
+        path: '/notes',
+        component: bookApp
+    }
 
 
 ]
