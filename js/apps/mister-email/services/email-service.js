@@ -6,7 +6,8 @@ import storageService, { makeId } from '../../../../lib/utils.js'
 
 export default {
     getMails,
-    getEmailById
+    getEmailById,
+    getEmailByFilter
 }
 
 
@@ -32,6 +33,27 @@ function getMails(){
 function getEmailById(emailId){
     var email = gEmails.find(email => email.id === emailId);
     return Promise.resolve(email);
+}
+
+
+function getEmailByFilter(key,type){
+    var regex = new RegExp(`${key}`, 'i');
+
+    var emails;
+    switch(type){
+        case 'readEmails':
+            emails = gEmails.filter(email => email.isRead);
+            break;
+        case 'unreadEmails':
+            emails = gEmails.filter(email => !email.isRead);
+            break;
+        case 'allEmails':
+            emails = gEmails;
+            break;
+    }
+    if(emails && key) emails = emails.filter(email => regex.test(email.subject)) 
+    
+    return Promise.resolve(emails)
 }
 
 

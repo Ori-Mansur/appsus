@@ -9,7 +9,7 @@ export default {
     ,
     computed: {
         isRead(){
-            return{'unread-mail': this.email.isRead};
+            return{'unread-mail': !this.email.isRead};
         }
     }
 }
