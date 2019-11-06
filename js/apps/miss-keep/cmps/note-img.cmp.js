@@ -1,12 +1,12 @@
 'use strict'
 
-
+import tools from './tools.cmp.js'
 export default {
     props: ['note'],
     template: `
-          <section class="img-note">
+          <section class="img-note" :style="{'background-color':note.color}">
           <img :src="note.info"/>
-              {{note}}
+          <tools @update=""></tools>
           </section>
     `,
     data() {
@@ -15,13 +15,12 @@ export default {
         };
     },
     methods: {
-        reportVal() {
-            this.$emit("setVal", this.val);
-        }
+        removeNote(noteid){
+            this.$emit('remove', noteid);
+        },
+      
     },
-    computed: {
-        listId() {
-            return "list" + this._uid;
-        }
+    components:{
+        tools
     }
 };

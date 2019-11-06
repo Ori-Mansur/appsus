@@ -8,9 +8,9 @@ import noteVideo from '../cmps/note-video.cmp.js'
 export default{
     template:`
     <section class="notes-preview">
-    <div v-for="(note, idx) in notes" v-if="notes" >  
-            <component :is="note.type"  :note="note"></component>
-        </div>    
+  
+            <component v-for="(note, idx) in notes" :is="note.type"  :note="note"></component>
+           
     </section>
     `,
     data() {

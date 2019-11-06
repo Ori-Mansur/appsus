@@ -4,7 +4,7 @@
 export default {
     props: ['note'],
     template: `
-          <section class=video-note>
+          <section class="video-note" :style="{'background-color':note.color}">
             <iframe :src="src">
              </iframe>
           </section>

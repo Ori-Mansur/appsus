@@ -1,11 +1,11 @@
 'use strict'
 
-
+import tools from './tools.cmp.js'
 export default {
     props: ['note'],
     template: `
-          <section class="text-note">
-              {{note.info}}
+          <section class="text-note" :style="{'background-color':note.color}">
+             <h3> {{note.info}}</h3>
           </section>
     `,
     data() {
@@ -22,5 +22,8 @@ export default {
         listId() {
             return "list" + this._uid;
         }
+    },
+    components:{
+        tools
     }
 };
