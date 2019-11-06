@@ -1,0 +1,12 @@
+.email-compose-container{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.email-compose-container form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

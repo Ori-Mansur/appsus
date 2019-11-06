@@ -7,7 +7,8 @@ import storageService, { makeId } from '../../../../lib/utils.js'
 export default {
     getMails,
     getEmailById,
-    getEmailByFilter
+    getEmailByFilter,
+    showMoreFromEmail
 }
 
 
@@ -35,6 +36,15 @@ function getEmailById(emailId){
     return Promise.resolve(email);
 }
 
+function showMoreFromEmail(emailId){
+    return getEmailById(emailId)
+        .then(email =>{
+            if(email.isShowingMore) email.isShowingMore=false;
+            else email.isShowingMore = true;
+            storageService.store(MAIL_KEY,gEmails);
+            return Promise.resolve();
+        })
+}
 
 function getEmailByFilter(key,type){
     var regex = new RegExp(`${key}`, 'i');
@@ -64,6 +74,7 @@ function _createMails(){
             subject: 'Wassap with Vue?',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: false,
+            isShowingMore: false,
             sentAt : 1551133930843
         },
         {
@@ -71,6 +82,7 @@ function _createMails(){
             subject: 'Wassap with React?',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: true,
+            isShowingMore: false,
             sentAt : 1551133933968
         },
         {
@@ -78,6 +90,7 @@ function _createMails(){
             subject: 'Wassap with Angular?',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: false,
+            isShowingMore: false,
             sentAt : 1551133910276
         },
         {
@@ -85,6 +98,7 @@ function _createMails(){
             subject: 'Wassap with Angular?',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: true,
+            isShowingMore: false,
             sentAt : 1551133910276
         },
         {
@@ -92,6 +106,7 @@ function _createMails(){
             subject: 'Wassap with Angular?',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: false,
+            isShowingMore: false,
             sentAt : 1551133910276
         }
     ];
