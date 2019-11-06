@@ -2,8 +2,9 @@
 
 
 import bookApp from './apps/miss-book/pages/book-app.cmp.js'
-
 import bookDetails from './apps/miss-book/pages/book-details.cmp.js'
+
+import keepApp from './apps/miss-keep/pages/keep-app.cmp.js'
 
 const myRoutes = [
     {
@@ -20,7 +21,7 @@ const myRoutes = [
     },
     {
         path: '/notes',
-        component: bookApp
+        component: keepApp
     }
 
 

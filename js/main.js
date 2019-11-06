@@ -19,7 +19,7 @@ new Vue({
     <nav>
             <router-link to="/">Home</router-link> |
             <router-link to="/email">Email</router-link> |
-            <router-link to="/nots">Nots</router-link> |
+            <router-link to="/notes">Notes</router-link> |
             <router-link to="/book">Books</router-link> |
             <router-link to="/about">About</router-link> |
     </nav>
