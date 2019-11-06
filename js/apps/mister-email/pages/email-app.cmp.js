@@ -15,17 +15,6 @@ export default {
         <router-view></router-view>
     </section>`
     ,
-    data(){
-        return {
-            filterBy: null
-        }
-    },
-    methods:{
-        searchBy(){
-            console.log('!!!');
-            
-        }
-    },
     components: {
         emailFilter,
         emailHeader
