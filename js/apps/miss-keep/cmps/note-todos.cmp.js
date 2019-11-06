@@ -5,7 +5,11 @@ export default {
     props: ['note'],
     template: `
           <section class="text-note" :style="{'background-color':note.color}">
-             <h3> {{note.info}}</h3>
+            <ul>
+                <li v-for="todo in note.info">
+                    {{todo}}
+                </li>
+            </ul>
              <tools :noteId="note.id" @update="updateNote"></tools>
           </section>
     `,
@@ -15,9 +19,9 @@ export default {
             this.$emit('update', details);
 
         },
-    },
-    computed: {
-
+        reportVal() {
+            this.$emit("setVal", this.val);
+        }
     },
     components: {
         tools

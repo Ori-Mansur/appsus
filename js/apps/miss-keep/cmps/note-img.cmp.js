@@ -6,7 +6,7 @@ export default {
     template: `
           <section class="img-note" :style="{'background-color':note.color}">
           <img :src="note.info"/>
-          <tools @update=""></tools>
+          <tools :noteId="note.id" @update="updateNote"></tools>
           </section>
     `,
     data() {
@@ -15,12 +15,14 @@ export default {
         };
     },
     methods: {
-        removeNote(noteid){
-            this.$emit('remove', noteid);
+        updateNote(details) {
+            console.log(details);
+            this.$emit('update', details);
+
         },
-      
+
     },
-    components:{
+    components: {
         tools
     }
 };

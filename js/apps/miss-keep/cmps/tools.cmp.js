@@ -1,18 +1,24 @@
 'use strict'
-
+import {eventBus} from '../../../general-service/event-bus-service.js'
 export default {
-    props: ['noteid'],
+    props: ['noteId'],
     template: `
     <section>
-    <input type="color" />
+    <input type="color" @change="updateNote(color)" v-model="color"/>
     <button @click="updateNote('remove')">X</button>
     <button @click="updateNote('edit')">edit</button>
     <button @click="updateNote('pin')">pin</button>
     </section>
     `,
+    data() {
+        return {
+            color: ''
+        }
+    },
     methods: {
         updateNote(type) {
-            this.$emit('update', { id: this.noteid, type, });
+            if (type === 'edit') eventBus.$emit('edit', this.noteId);
+            this.$emit('update', { id: this.noteId, type });
         },
     }
 
