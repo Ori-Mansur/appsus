@@ -30,13 +30,13 @@ const myRoutes = [
                 component: emailList,
             },
             {
+                path: 'compose',
+                component: emailCompose
+            },
+            {
                 path: ':id',
                 component: emailDetails,
             },
-            {
-                path: 'compose',
-                component: emailCompose
-            }
         ]
     },
     {

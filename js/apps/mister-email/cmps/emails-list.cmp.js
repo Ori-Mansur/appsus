@@ -3,6 +3,7 @@
 
 import emailService from '../services/email-service.js'
 import emailPreview from './email-preview.cmp.js'
+import emailShort from './email-short-details.cmp.js';
 import {eventBus} from '../../../general-service/event-bus-service.js'
 
 
@@ -11,20 +12,23 @@ export default {
     template:`
     <section class="email-list-container">
         <h1>EMAIL LIST</h1>
-        <ul class="email-list">
-            <router-link v-for="email in emails" :key="email.id" :to="'email/'+email.id">
-                <email-preview :email="email"></email-preview>
-            </router-link>
+        <ul class="email-list" v-for="email in emails" :key="email.id">
+            <email-preview @click.native="showMore(email.id)" :email="email"></email-preview>
+            <email-short v-if="email.isShowingMore" :email="email"></email-short>
+            <!-- <router-link v-for="email in emails" :key="email.id" :to="'email/'+email.id"></router-link> -->
         </ul>
     </section>`,
     data(){
         return{
             emails: [],
-            filterBy: null
+            filterBy: null,
         }
     },
     
     methods: {
+        showMore(emailId){
+            emailService.showMoreFromEmail(emailId)
+        },
         emailsToShow(){
             if(!this.filterBy) return this.emails
             else {                
@@ -48,6 +52,7 @@ export default {
             })
     },
     components:{
-        emailPreview
+        emailPreview,
+        emailShort
     },
 }
