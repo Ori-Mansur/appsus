@@ -1,12 +1,15 @@
 'use strict'
-import tools from './tools.cmp.js'
 
+import tools from './tools.cmp.js'
 export default {
     props: ['note'],
     template: `
-          <section class="video-note note-container" :style="{'background-color':note.color}">
-            <iframe :src="src">
-             </iframe>
+          <section class="todos-note note-container" :style="{'background-color':note.color}">
+            <ul>
+                <li v-for="susject in note.info">
+                    {{susject}}
+                </li>
+            </ul>
              <tools :noteId="note.id" @update="updateNote"></tools>
           </section>
     `,
@@ -14,11 +17,6 @@ export default {
         updateNote(details) {
             this.$emit('update', details);
         },
-    },
-    computed: {
-        src() {
-            return `https://www.youtube.com/embed/${this.note.info}`;
-        }
     },
     components: {
         tools

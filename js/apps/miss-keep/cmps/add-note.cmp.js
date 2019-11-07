@@ -7,96 +7,106 @@ import tools from './tools.cmp.js'
 export default {
     template: `
     <section class="add-note">
-        <input type="type" v-model="info"/>
-        <button class="type-btn" :class="textNote" @click="setNoteType('text-note')">
-            <img src="img/font.png">
-        </button>
-        <button class="type-btn" :class="noteImg" @click="setNoteType('note-img')">
-            <img src="img/001-picture.png">
-        </button>
-        <button class="type-btn" :class="noteVideo" @click="setNoteType('note-video')">
-            <img src="img/002-youtube.png">
-        </button>
-        <button class="type-btn" :class="noteAudio" @click="setNoteType('note-audio')">
-            <img src="img/003-speaker.png">
-        </button>
-        <button class="type-btn" :class="noteTodos"@click="setNoteType('note-todos')">
-            <img src="img/004-menu.png">
-        </button>
-        <button class="type-btn" :class="noteMap"@click="setNoteType('note-map')">
-            <img src="img/pin.png">
-        </button>
-        <tools :noteId="id" @update="updateNote"></tools>
-        <button class="add-btn select"@click="addNote">add</button>
+        <div class="add-note-action flex align-center">
+            <input class="input-note" type="type" v-model="note.info" :placeholder="[[instructions]]"/>
+            <button class="type-btn" :class="textNote" @click="setNoteType('text-note')">
+                <img src="img/font.png">
+            </button>
+            <button class="type-btn" :class="noteImg" @click="setNoteType('note-img')">
+                <img src="img/001-picture.png">
+            </button>
+            <button class="type-btn" :class="noteVideo" @click="setNoteType('note-video')">
+                <img src="img/002-youtube.png">
+            </button>
+            <button class="type-btn" :class="noteAudio" @click="setNoteType('note-audio')">
+                <img src="img/003-speaker.png">
+            </button>
+            <button class="type-btn" :class="noteTodos"@click="setNoteType('note-todos')">
+                <img src="img/004-menu.png">
+            </button>
+            <button class="type-btn" :class="noteMap"@click="setNoteType('note-map')">
+                <img src="img/pin.png">
+            </button>
+        </div> 
+        <div class="add-btn-conteiner"> 
+            <button class="add-btn select"@click="addNote">Add</button>
+        <tools :noteId="note.id" @update="updateNote"></tools>
+</div>
     
     </section>
     `,
     data() {
         return {
-            type: 'text-note',
-            info: '',
-            color: '',
-            id: '',
-            pin: false
+            note: {
+                type: 'text-note',
+                info: '',
+                color: '',
+                id: '',
+                pin: false
+            }
         }
-
     },
     created() {
         eventBus.$on('edit', id => {
             keepService.getNoteById(id)
                 .then(note => {
-                    this.type = note.type
-                    this.info = note.info
-                    this.color = note.color
-                    this.id = note.id
+                    this.note = note
                 })
         })
     },
     methods: {
         addNote() {
-            if (this.id) keepService.editNote(this.id, this.type, this.info, this.color)
-                .then(() => {
-                    this.id = '';
-                    this.info = '';
-                })
-            else keepService.addNewNote(this.type, this.info, this.color)
-                .then(() => {
-                    this.info = '';
-                })
+            if (this.note.id) keepService.editNote(this.note)
+                .then(() => this.emptyNote())
+            else keepService.addNewNote(this.note)
+                .then(() => this.emptyNote())
         },
         setNoteType(type) {
-            this.type = type
-            if (type === 'note-todos') this.info = []
+            this.note.type = type
+
         },
         updateNote(details) {
             if (details.type === 'edit') return
-            else if (details.type === 'remove') {
-                this.info = ''
-                this.color = ''
-                this.pin = false
-            } else if (details.type === 'pin') this.pin = true
-            else this.color = details.type
-
+            else if (details.type === 'remove') this.emptyNote()
+            else if (details.type === 'pin') this.note.pin = !this.note.pin
+            else this.note.color = details.type
         },
+        emptyNote() {
+            this.note = {
+                type: 'text-note',
+                info: '',
+                color: '',
+                id: '',
+                pin: false
+            }
+        }
     },
     computed: {
         textNote() {
-            return { select: this.type === 'text-note' }
+            return { select: this.note.type === 'text-note' }
         },
         noteImg() {
-            return { select: this.type === 'note-img' }
+            return { select: this.note.type === 'note-img' }
         },
         noteVideo() {
-            return { select: this.type === 'note-video' }
+            return { select: this.note.type === 'note-video' }
         },
         noteAudio() {
-            return {select: this.type==='note-audio'}
+            return { select: this.note.type === 'note-audio' }
         },
         noteTodos() {
-            return {select: this.type==='note-todos'}
+            return { select: this.note.type === 'note-todos' }
         },
         noteMap() {
-            return {select: this.type==='note-map'}
+            return { select: this.note.type === 'note-map' }
+        },
+        instructions() {
+            if (this.note.type === 'text-note') return `What's on your mind...`
+            else if (this.note.type === 'note-img') return `Enter image URL...`
+            else if (this.note.type === 'note-video') return `Enter video URL...`
+            else if (this.note.type === 'note-audio') return `Enter audio URL...`
+            else if (this.note.type === 'note-todos') return `Enter comma separated list...`
+            else if (this.note.type === 'note-map') return `What's on your mind...`
         }
     },
     components: {

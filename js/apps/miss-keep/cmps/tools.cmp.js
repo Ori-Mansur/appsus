@@ -1,13 +1,13 @@
 'use strict'
-import {eventBus} from '../../../general-service/event-bus-service.js'
+import { eventBus } from '../../../general-service/event-bus-service.js'
 export default {
     props: ['noteId'],
     template: `
-    <section>
+    <section class="action-btn-container">
     <input type="color" @change="updateNote(color)" v-model="color"/>
-    <button @click="updateNote('remove')">X</button>
-    <button @click="updateNote('edit')">edit</button>
-    <button @click="updateNote('pin')">pin</button>
+    <button @click="updateNote('remove')">🗑</button>
+    <button @click="updateNote('edit')">✎</button>
+    <button @click="updateNote('pin')">	&#x1f4cc;</button>
     </section>
     `,
     data() {

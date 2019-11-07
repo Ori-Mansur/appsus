@@ -42,12 +42,6 @@ const myRoutes = [
     {
         path: '/notes',
         component: keepApp,
-        children: [
-            {
-                path: ':id?',
-                component: keepApp,
-            },
-        ]
     }
 
 

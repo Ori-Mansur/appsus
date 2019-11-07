@@ -4,7 +4,7 @@ import tools from './tools.cmp.js'
 export default {
     props: ['note'],
     template: `
-          <section class="text-note" :style="{'background-color':note.color}">
+          <section class="text-note note-container" :style="{'background-color':note.color}">
              <h3> {{note.info}}</h3>
              <tools :noteId="note.id" @update="updateNote"></tools>
           </section>

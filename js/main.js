@@ -2,6 +2,8 @@
 
 
 import theRouter from './routes.js'
+import appHeader from './general-cmps/header.cmp.js'
+import appFooter from './general-cmps/footer.cmp.js'
 
 
 
@@ -13,36 +15,13 @@ new Vue({
     el: '#appsus',
     template: `
     <section class="home">
-    <header>
-    
-    <h2>{{title}}</h2>
-    <nav>
-            <router-link to="/">Home</router-link> |
-            <router-link to="/email">Email</router-link> |
-            <router-link to="/notes">Notes</router-link> |
-            <router-link to="/book">Books</router-link> |
-            <router-link to="/about">About</router-link> |
-    </nav>
-    </header>
+    <app-header></app-header>
         <router-view></router-view>
-        <footer class="footer"></footer>
-        
-        
+        <app-footer></app-footer>
     </section>
     `,
-    data: {
-        title: 'Appsus',
-    },
-    methods: {
-
-
-    },
-    created() {
-
-
-    },
-
     components: {
-        
+        appHeader,
+        appFooter
     }
 })

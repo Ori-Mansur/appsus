@@ -4,10 +4,11 @@ import tools from './tools.cmp.js'
 export default {
     props: ['note'],
     template: `
-          <section class="text-note" :style="{'background-color':note.color}">
+          <section class="todos-note note-container" :style="{'background-color':note.color}">
             <ul>
-                <li v-for="todo in note.info">
-                    {{todo}}
+                <li v-for="objTodo in note.info" @click="markTodo(objTodo.id)" 
+                :class="{'done-todo':objTodo.isDone}">
+                    {{objTodo.todo}}
                 </li>
             </ul>
              <tools :noteId="note.id" @update="updateNote"></tools>
@@ -15,12 +16,11 @@ export default {
     `,
     methods: {
         updateNote(details) {
-            console.log(details);
             this.$emit('update', details);
-
         },
-        reportVal() {
-            this.$emit("setVal", this.val);
+        markTodo(todoId) {
+            var noteId = this.note.id
+            this.$emit('mark', { todoId, noteId });
         }
     },
     components: {

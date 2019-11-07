@@ -1,23 +1,47 @@
 'use strict'
+import { eventBus } from '../../../general-service/event-bus-service.js'
 
 
 export default {
-    template:`
+    template: `
     <section class="notes-filter">
     <h2>Search Note</h2>
-        <input type="text" v-model="filterBy.name" placeholder="Note Name">
+        <input type="text" @input="setFilter" v-model="filterBy[select]" placeholder="Note Name">
+        <select v-model="select">
+        <option value="type">type</option>
+        <option value="name">name</option>
+    </select>
     </section>
     `,
     data() {
         return {
             filterBy: {
                 name: '',
-                type:'',
+                type: '',
+            },
+            select: 'type'
+        }
+    },
+    methods: {
+        setFilter() {
+            eventBus.$emit('filterd', this.filterBy)
+        }
+    },
+    computed: {
+        status: {
+            get() {
+
+                return (this.select === 'type') ? this.filterBy.type : this.filterBy.name
+            }
+        },
+        status: {
+            get() {
+                return (this.statusProxy === null) ? true : this.statusProxy
             }
         }
     },
     created() {
-        this.$emit('filtered', this.filterBy)
+
     },
-   
+
 }
