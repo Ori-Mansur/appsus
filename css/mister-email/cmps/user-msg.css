@@ -1,0 +1,15 @@
+
+.user-msg-container{
+    position: absolute;
+    top: 70px;
+    right: 50%;
+}
+
+.seccuss{
+    background-color: lightGreen;
+}
+
+.failure{
+    background-color: lightCoral;
+}
+
