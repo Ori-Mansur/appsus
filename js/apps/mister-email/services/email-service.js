@@ -10,7 +10,8 @@ export default {
     getEmailByFilter,
     showMoreFromEmail,
     addNewMail,
-    deleteMail
+    deleteMail,
+    saveEmailToStorage
 }
 
 
@@ -85,6 +86,10 @@ function deleteMail(emailId){
    gEmails.splice(idx,1);
    storageService.store(MAIL_KEY,gEmails);
    return Promise.resolve()
+}
+
+function saveEmailToStorage(email){
+    storageService.store('email-toKeep',email);
 }
 
 
