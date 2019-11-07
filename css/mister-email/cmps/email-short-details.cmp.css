@@ -1,0 +1,16 @@
+.emails-short-details-container{
+    background-color: aquamarine;
+}
+
+.emails-short-details-container button{
+    background-color: none;
+    border-radius: 20px;
+    border-style: none;
+}
+
+.btn-short-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 7px;
+}

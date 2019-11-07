@@ -31,12 +31,11 @@ export default {
         },
         returnToEmails(){
             console.log('!!!');
-            // this.$router.push('')
+            this.$router.push('/email')
         },
         replayEmail(email){
             console.log(email);
-            eventBus.$emit('replay',email)
-            this.$router.push('compose')
+            this.$router.push(`compose/${email.id}`)
             
 
         }

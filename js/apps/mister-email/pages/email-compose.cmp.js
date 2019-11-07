@@ -18,16 +18,10 @@ export default {
     `,
     data(){
         return {
-            // email:{}
             email: {
                 subject: '',
                 body: ''
             }
-        }
-    },
-    computed:{
-        showSubject(){
-            return 'hhhh'
         }
     },
     methods:{
@@ -54,21 +48,28 @@ export default {
             
         }
     },
-    created(){
-
-        eventBus.$on('replay',(email)=>{
-            console.log('!!!!');
-            console.log(email);
-            this.email = email
-            // this.email.subject = email.subject;
-            // this.email.body = email.body
-            console.log(this.email);
-            
-            // this.$refs.inputSubject.value = email.subject;
-            // this.$ref.inputBody.value = email.body;
-            
-        })
+    created () {
+        const emailId = this.$route.params.id;
+        console.log(emailId);
+        
+        if(emailId)
+            emailService.getEmailById(emailId)
+                .then(email =>{
+                    this.email.subject = 'RE: '+email.subject;
+                    this.email.body = email.body;
+                })
+        else{
+            this.email.subject = '';
+            this.email.body = '';
+        }
     },
+    watch: {
+        '$route.params.id'() {
+            const emailId = this.$route.params.id;
+            if(!emailId) {
+                this.email = {}
+            }
+        }
+    }
     
-
 }

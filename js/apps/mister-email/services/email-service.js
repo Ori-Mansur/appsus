@@ -101,6 +101,7 @@ function addNewMail(email){
         sentAt: Date.now(),
         type: email.type
     }
+    if(email.type ==='draft') newEmail.isRead = true;
     gEmails.unshift(newEmail);
     storageService.store(MAIL_KEY,gEmails);
     return Promise.resolve();
@@ -124,9 +125,7 @@ function getEmailsAmount(){
     for(var i =0;i<gEmails.length;i++){
         if(!gEmails[i].isRead ) unread++
     }
-    console.log('length:',length,unread);
-    return Promise.resolve({length,unread})
-    
+    return Promise.resolve({length,unread})    
 }
 
 

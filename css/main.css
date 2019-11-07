@@ -5,6 +5,7 @@
 @import './mister-email/cmps/email-app-header.css';
 @import './mister-email/pages/email-app.css';
 @import './mister-email/cmps/email-status.css';
+@import './mister-email/cmps/email-short-details.cmp.css';
 @import './miss-keep/miss-keep.css';
 @font-face {
     font-family: Montserrat;

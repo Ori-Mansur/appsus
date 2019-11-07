@@ -34,8 +34,9 @@ const myRoutes = [
                 component: emailList
             },
             {
-                path: 'compose',
-                component: emailCompose
+                path: 'compose/:id?',
+                component: emailCompose,
+
             },
             {
                 path: ':id',
