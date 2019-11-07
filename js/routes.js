@@ -30,6 +30,10 @@ const myRoutes = [
                 component: emailList,
             },
             {
+                path: 'draft',
+                component: emailList
+            },
+            {
                 path: 'compose',
                 component: emailCompose
             },

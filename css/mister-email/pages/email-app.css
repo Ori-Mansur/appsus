@@ -1,0 +1,10 @@
+.email-app{
+    display: flex;
+    flex-direction: column;
+}
+
+.email-app-container{
+    display: flex;
+    flex-direction: row;
+    margin-top:20px;
+}

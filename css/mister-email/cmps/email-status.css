@@ -1,0 +1,18 @@
+.bar-container{
+    background-color: red;
+    height: 20px;
+    border-radius: 4px;
+}
+
+.bar-container p{
+    margin: 0;
+    height: 0;
+    text-align: center;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.bar{
+    background-color: green;
+    height: 100%;
+}
