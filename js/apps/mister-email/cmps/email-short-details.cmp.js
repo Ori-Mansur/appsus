@@ -20,8 +20,8 @@ export default {
             emailService.deleteMail(emailId);
         },
         emailToKeep(email){
-            eventBus.$emit('email-toKeep',email)
-
+            // eventBus.$emit('email-toKeep',email)
+            emailService.saveEmailToStorage(email)
         }
 
     }
