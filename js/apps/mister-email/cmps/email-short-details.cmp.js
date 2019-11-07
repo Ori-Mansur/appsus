@@ -3,6 +3,8 @@
 import emailService from '../services/email-service.js'
 import {eventBus} from '../../../general-service/event-bus-service.js'
 
+///ffff
+
 export default {
     props:['email'],
     template:`
