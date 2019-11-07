@@ -8,7 +8,9 @@ export default {
     getMails,
     getEmailById,
     getEmailByFilter,
-    showMoreFromEmail
+    showMoreFromEmail,
+    addNewMail,
+    deleteMail
 }
 
 
@@ -48,7 +50,6 @@ function showMoreFromEmail(emailId){
 
 function getEmailByFilter(key,type){
     var regex = new RegExp(`${key}`, 'i');
-
     var emails;
     switch(type){
         case 'readEmails':
@@ -62,8 +63,28 @@ function getEmailByFilter(key,type){
             break;
     }
     if(emails && key) emails = emails.filter(email => regex.test(email.subject)) 
-    
     return Promise.resolve(emails)
+}
+
+function addNewMail(email){
+    var newEmail = {
+        id: makeId(),
+        subject: email.subject,
+        body: email.body,
+        isRead: false,
+        isShowingMore: false,
+        sentAt: Date.now()
+    }
+    gEmails.unshift(newEmail);
+    storageService.store(MAIL_KEY,gEmails);
+    return Promise.resolve();
+}
+
+function deleteMail(emailId){
+   var idx = gEmails.findIndex(email => email.id === emailId)
+   gEmails.splice(idx,1);
+   storageService.store(MAIL_KEY,gEmails);
+   return Promise.resolve()
 }
 
 

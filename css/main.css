@@ -1,4 +1,5 @@
 @import './miss-book/style.css';
 @import './mister-email/cmps/email-preview.css';
 @import './mister-email/cmps/email-compose.css';
+@import './mister-email/cmps/user-msg.css';
 @import './miss-keep/miss-keep.css';
