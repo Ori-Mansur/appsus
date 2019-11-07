@@ -20,15 +20,19 @@
 img, iframe {
     width: 100%;
 }
-p, h4{
+
+p, h4 {
     margin: 0;
 }
+
 a {
     text-decoration: none;
 }
-button{
+
+button {
     cursor: pointer;
 }
+
 html {
     font-family: Montserrat;
 }
@@ -85,15 +89,15 @@ nav {
 }
 
 .main-footer {
-    height: 420px;
+    height: 200px;
     background-color: #000000;
 }
-@media screen and (max-width: 960px){
-    .container{
+
+@media screen and (max-width: 960px) {
+    .container {
         max-width: 740px;
     }
 }
-
 
 /* helper */
 

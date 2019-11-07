@@ -9,6 +9,7 @@ export default {
     <section class="add-note">
         <div class="add-note-action flex align-center">
             <input class="input-note" type="type" v-model="note.info" :placeholder="[[instructions]]"/>
+          
             <button class="type-btn" :class="textNote" @click="setNoteType('text-note')">
                 <img src="img/font.png">
             </button>
@@ -28,9 +29,13 @@ export default {
                 <img src="img/pin.png">
             </button>
         </div> 
+        <transition name="slide-fade">
+        <input v-show="note.info" v-model="note.title" class="input-note-title" type="type" placeholder="Give it a title..."/>
+        </transition>
         <div class="add-btn-conteiner"> 
             <button class="add-btn select"@click="addNote">Add</button>
-        <tools :noteId="note.id" @update="updateNote"></tools>
+            
+            <button v-if="note.id" class="add-btn select"@click="emptyNote">Cancel</button>
 </div>
     
     </section>
@@ -39,6 +44,7 @@ export default {
         return {
             note: {
                 type: 'text-note',
+                title: '',
                 info: '',
                 color: '',
                 id: '',

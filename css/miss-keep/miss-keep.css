@@ -52,22 +52,41 @@
 
 .input-note {
     height: 40px;
-    border-radius: 0;
-    border: none;
-}
-.tools-input-color{
-    background:none;
-    border: none;
-    width: 25px;
-}
-.tools-btn{
-    font-size: 18px;
-    background:none;
     border: none;
 }
 
-.add-note>.action-btn-container {
-    opacity: 1;
+.input-note-title {
+    height: 40px;
+    border: none;
+    transition: 10s;
+}
+
+.slide-fade-enter-active {
+    transition: all .3s ease;
+}
+
+.slide-fade-leave-active {
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */
+
+    {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+.tools-input-color {
+    background: none;
+    border: none;
+    width: 25px;
+}
+
+.tools-btn {
+    font-size: 18px;
+    background: none;
+    border: none;
 }
 
 .add-note-action {
@@ -87,7 +106,6 @@
 .action-btn-container {
     opacity: 0;
     transition: opacity 0.3;
-    
 }
 
 .note-container {
@@ -104,20 +122,20 @@
 .done-todo {
     text-decoration: line-through;
 }
-@media screen and (max-width: 740px){
+
+@media screen and (max-width: 740px) {
     .pin-notes {
         column-count: 2;
     }
-    
     .all-notes {
         column-count: 2;
     }
 }
-@media screen and (max-width: 530px){
+
+@media screen and (max-width: 530px) {
     .pin-notes {
         column-count: 1;
     }
-    
     .all-notes {
         column-count: 1;
     }
