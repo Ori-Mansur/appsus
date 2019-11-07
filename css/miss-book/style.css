@@ -1,7 +1,3 @@
-
-
-
-
 ul {
     padding: 0;
     margin: 10px;
@@ -17,19 +13,14 @@ li {
     max-height: 400px;
 }
 
-
-textarea{
-    border-radius: 12px; 
-}
-
 input:focus {
     outline: none;
     border: 1px solid orange;
 }
-.book-list{
+
+.book-list {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 }
 
@@ -47,10 +38,6 @@ input:focus {
     box-shadow: 10px 10px 12px 1px rgba(0, 0, 0, 0.75);
 }
 
-.book-list h4 {
-    margin: 0;
-}
-
 .book-details {
     background-color: rgb(196, 179, 179);
 }
@@ -58,29 +45,19 @@ input:focus {
 .book-details ul {
     column-count: 2;
 }
-
-.book-details h4 {
-    display: inline-block;
-    margin: 0;
-}
-
-.book-details p {
-    margin: 0;
-}
-
 .book-details li {
     margin-bottom: 10px;
 }
-.add-review{
+
+.add-review {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.add-review textarea{
+
+.add-review textarea {
     display: block;
-
 }
-
 
 .footer {
     height: 120px;
@@ -105,23 +82,32 @@ input:focus {
     max-width: 100%;
     width: 70%;
 }
-.book-add{
-    background-color: burlywood;
+
+.book-add {
     padding-bottom: 20px;
     text-align: center;
 }
-.book-add h3{
+
+.book-add h3 {
     margin-top: 0;
 }
-.book-filter{
-    background-color: burlywood;
+
+.book-filter {
     text-align: center;
     padding-bottom: 20px;
 }
-.book-filter h2{
+
+.book-filter h2 {
     margin-top: 0;
 }
 
 .hide {
     display: none;
+}
+
+@media screen and (max-width: 700px) {
+    .book-list ul {
+        grid-template-columns: auto auto;
+        gap: 15px
+    }
 }

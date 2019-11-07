@@ -19,11 +19,15 @@
 img, iframe {
     width: 100%;
 }
-
+p, h4{
+    margin: 0;
+}
 a {
     text-decoration: none;
 }
-
+button{
+    cursor: pointer;
+}
 html {
     font-family: Montserrat;
 }
