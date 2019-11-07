@@ -84,24 +84,7 @@ nav {
         max-width: 740px;
     }
 }
-@media screen and (max-width: 740px){
-    .pin-notes {
-        column-count: 2;
-    }
-    
-    .all-notes {
-        column-count: 2;
-    }
-}
-@media screen and (max-width: 530px){
-    .pin-notes {
-        column-count: 1;
-    }
-    
-    .all-notes {
-        column-count: 1;
-    }
-}
+
 
 /* helper */
 
