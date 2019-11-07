@@ -28,10 +28,10 @@ export default {
     },
     created() {
         this.notes = keepService.getNotes();
-        eventBus.$on('email-toKeep', email => {
-            console.log(email);
+        // eventBus.$on('email-toKeep', email => {
+        //     console.log(email);
             
-        })
+        // })
     },
     components: {
         textNote,

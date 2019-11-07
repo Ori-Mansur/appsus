@@ -1,5 +1,5 @@
 'use strict'
-import surveyService from './survey.service.js'
+import utilsService from '../../../../lib/utils.js'
 export default {
     getEmptyNoteByType,
     addNewNote,
@@ -30,9 +30,13 @@ var gNotes = [{
 },
 ]
 
-
+getNotes()
 function getNotes() {
-    var notes
+
+    var notesFromEmail=utilsService.load('email-toKeep')
+    console.log(notesFromEmail);
+    
+    var notes=utilsService.load('notes')
     return gNotes
 }
 function getNoteById(id) {
