@@ -1,4 +1,8 @@
 
+.mail-container{
+    padding-left:12px;
+}
+
 .unread-mail{
     font-weight: bold;
 }

@@ -1,5 +1,9 @@
 'use strict'
 
+
+
+
+
 export default {
     props:['txt'],
     template:`
@@ -10,7 +14,7 @@ export default {
     ,
     computed: {
         showTxt(){
-            if(this.txt.length>100) return this.txt.substring(0,65)+'...'
+            if(this.txt.length>100) return this.txt.substring(0,40)+'...'
             else return this.txt
         }
     }

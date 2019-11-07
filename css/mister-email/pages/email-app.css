@@ -1,10 +1,12 @@
 .email-app{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .email-app-container{
     display: flex;
     flex-direction: row;
     margin-top:20px;
+    width: 100%;
 }

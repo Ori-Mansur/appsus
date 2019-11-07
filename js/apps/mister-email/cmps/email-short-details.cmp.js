@@ -8,9 +8,8 @@ export default {
     template:`
     <section class="emails-short-details-container">
         <div class="btn-short-details">
-            <button @click="deleteEmail(email.id)">Delete</button><router-link :to="'email/'+email.id"><button v-if="email.type === 'inbox'">Read More</button></router-link><button @click="emailToKeep(email)">Keep</button></div>
-        <h2>{{email.subject}}</h2>
-        <h4>Name</h4><span>User Mail</span>
+            <button @click="deleteEmail(email.id)"><img  src="../../../img/garbage.png"/></button><router-link :to="'email/'+email.id"><button v-if="email.type === 'inbox'"><img src="../../../img/msg.png"/></button></router-link><button @click="emailToKeep(email)"><img src="../../../img/pinmail.png"/></button></div>
+        <p class="short-subject">{{email.subject}}</p>
         <p>{{email.body}}</p>
     </section>`
     ,

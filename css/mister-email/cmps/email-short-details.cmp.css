@@ -1,5 +1,9 @@
 .emails-short-details-container{
-    background-color: aquamarine;
+    background-color: #4e5d586b;
+    border-radius: 11px;
+    padding: 12px;
+    width: 90%;
+
 }
 
 .emails-short-details-container button{
@@ -13,4 +17,21 @@
     flex-direction: row;
     justify-content: flex-end;
     padding-top: 7px;
+    height:0;
+}
+
+.btn-short-details img{
+    width: 17px;
+    height: 16px;
+}
+
+.btn-short-details button{
+    background-color:#b5bbb900;
+    margin-left:5px;
+}
+
+.short-subject{
+    padding: 0;
+    margin: 0 0 5px;
+    font-size: 20px;
 }

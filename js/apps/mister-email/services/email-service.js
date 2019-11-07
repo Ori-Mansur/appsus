@@ -47,6 +47,11 @@ function showMoreFromEmail(emailId){
         .then(email =>{
             if(email.isShowingMore) email.isShowingMore=false;
             else email.isShowingMore = true;
+            gEmails.forEach(email=>{
+                if(email.id !== emailId && email.isShowingMore === true){
+                    email.isShowingMore = false;
+                }
+            })
             storageService.store(MAIL_KEY,gEmails);
             return Promise.resolve();
         })
