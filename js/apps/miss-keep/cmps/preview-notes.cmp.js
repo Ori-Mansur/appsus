@@ -50,9 +50,13 @@ export default {
             var otherNotes = this.notes.filter(note => note.pin !== true)
             if (!this.filterBy) return otherNotes
             var regex = new RegExp(`${this.filterBy.type}`, 'i');
+            if (!this.filterBy.type) {
+                regex = new RegExp(`${this.filterBy.title}`, 'i');
+                return otherNotes.filter(note =>
+                    regex.test(note.title))
+            }
             return otherNotes.filter(note =>
-                regex.test(note.type)
-            )
+                regex.test(note.type))
         },
         pinNotes() {
             var pinNotes = this.notes.filter(note => note.pin === true)

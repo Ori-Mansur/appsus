@@ -6,17 +6,17 @@ export default {
     template: `
     <section class="notes-filter">
     <h2>Search Note</h2>
-        <input type="text" @input="setFilter" v-model="filterBy[select]" placeholder="Note Name">
+        <input type="text" @input="setFilter" v-model="filterBy[select]" :placeholder="searchBy">
         <select v-model="select">
-        <option value="type">type</option>
-        <option value="name">name</option>
+        <option value="type">Type</option>
+        <option value="title">Title</option>
     </select>
     </section>
     `,
     data() {
         return {
             filterBy: {
-                name: '',
+                title: '',
                 type: '',
             },
             select: 'type'
@@ -28,16 +28,8 @@ export default {
         }
     },
     computed: {
-        status: {
-            get() {
-
-                return (this.select === 'type') ? this.filterBy.type : this.filterBy.name
-            }
-        },
-        status: {
-            get() {
-                return (this.statusProxy === null) ? true : this.statusProxy
-            }
+        searchBy() {
+            return `Search by ${this.select}`
         }
     },
     created() {

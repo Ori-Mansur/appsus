@@ -12,6 +12,7 @@ var gNextId = 104
 var gNotes = [{
     id: 101,
     type: 'text-note',
+    title: 'important',
     info: 'blabla',
     color: 'greenyellow',
     pin: false
@@ -20,6 +21,7 @@ var gNotes = [{
 {
     id: 102,
     type: 'note-img',
+    title: 'car',
     info: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl3KjW6-2hhv4GMdYLAqC3kRS3GFE-dy46Q1tCFJ8sq2XgSitt&s',
     color: 'greenyellow',
     pin: false
@@ -27,6 +29,7 @@ var gNotes = [{
 {
     id: 103,
     type: 'note-video',
+    title: '6',
     info: 'iSgUMPHQEWw',
     color: 'greenyellow',
     pin: false
@@ -35,24 +38,27 @@ var gNotes = [{
 
 
 function getNotes() {
-    var notesFromEmail=utilsService.load('email-toKeep')
-    if(notesFromEmail){
+    var notesFromEmail = utilsService.load('email-toKeep')
+    if (notesFromEmail) {
         getNoteById(notesFromEmail.id)
-        .catch(()=> addEmailNote(notesFromEmail))
-        
+            .catch(() => addEmailNote(notesFromEmail))
+
     }
-    
-    var notes=utilsService.load('notes')
+
+    var notes = utilsService.load('notes')
     return gNotes
 }
 function getNoteById(id) {
     var note = gNotes.find(note => id === note.id)
-   if(note) return Promise.resolve(note)
-   else return Promise.reject()
+    if (note) return Promise.resolve(note)
+    else return Promise.reject()
 
 }
-function addEmailNote(email){
-    gNotes.unshift({ id:email.id, type:'note-email', info:[email.subject,email.body], color:'greenyellow' ,pin: false})
+function addEmailNote(email) {
+    gNotes.unshift({
+        id: email.id, type: 'note-email', title: 'email',
+        info: [email.subject, email.body], color: 'greenyellow', pin: false
+    })
 
 }
 
@@ -64,7 +70,7 @@ function addNewNote(note) {
         })
     }
     if (note.type === 'note-video') newNote.info = _getParameterByName('v', note.info)
-    newNote.id=utilsService.makeId(3)
+    newNote.id = utilsService.makeId(3)
     gNotes.unshift(newNote)
     return Promise.resolve()
 }
@@ -74,7 +80,7 @@ function updateNote(details) {
     else if (details.type === 'pin') pinNote(details)
     else changeNoteColor(details)
 }
-function pinNote(details){
+function pinNote(details) {
     var note = gNotes.find(note => details.id === note.id)
     note.pin = !note.pin
     return Promise.resolve()
@@ -94,10 +100,10 @@ function editNote(editNote) {
     gNotes.splice(idx, 1, editNote)
     return Promise.resolve()
 }
-function markTodo(todoDetails){
-    var note=gNotes.find(note=>note.id===todoDetails.noteId)
-    var todo=note.info.find(todo=>todo.id===todoDetails.todoId)
-    todo.isDone=!todo.isDone
+function markTodo(todoDetails) {
+    var note = gNotes.find(note => note.id === todoDetails.noteId)
+    var todo = note.info.find(todo => todo.id === todoDetails.todoId)
+    todo.isDone = !todo.isDone
     return Promise.resolve()
 }
 

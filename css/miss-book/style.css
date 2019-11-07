@@ -13,11 +13,6 @@ li {
     max-height: 400px;
 }
 
-input:focus {
-    outline: none;
-    border: 1px solid orange;
-}
-
 .book-list {
     display: flex;
     flex-direction: column;
@@ -45,6 +40,7 @@ input:focus {
 .book-details ul {
     column-count: 2;
 }
+
 .book-details li {
     margin-bottom: 10px;
 }
