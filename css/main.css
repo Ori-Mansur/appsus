@@ -2,4 +2,7 @@
 @import './mister-email/cmps/email-preview.css';
 @import './mister-email/cmps/email-compose.css';
 @import './mister-email/cmps/user-msg.css';
+@import './mister-email/cmps/email-app-header.css';
+@import './mister-email/pages/email-app.css';
+@import './mister-email/cmps/email-status.css';
 @import './miss-keep/miss-keep.css';

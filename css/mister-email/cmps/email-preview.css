@@ -2,3 +2,14 @@
 .unread-mail{
     font-weight: bold;
 }
+
+
+.subject{
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.body{
+    font-size: 13px;
+    margin-top:5px;
+}

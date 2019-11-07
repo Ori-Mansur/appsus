@@ -1,0 +1,5 @@
+.email-app-header-container nav {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}

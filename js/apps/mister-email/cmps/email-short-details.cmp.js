@@ -3,10 +3,8 @@
 import emailService from '../services/email-service.js'
 import {eventBus} from '../../../general-service/event-bus-service.js'
 
-///ffff
-
 export default {
-    props:['email'],
+    props:['email','filter'],
     template:`
     <section class="emails-short-details-container">
         <div><button @click="deleteEmail(email.id)">Delete</button><router-link :to="'email/'+email.id"><button>Read More</button></router-link><button @click="emailToKeep(email)">Keep</button></div>
@@ -17,13 +15,19 @@ export default {
     ,
     methods:{
         deleteEmail(emailId){
-            emailService.deleteMail(emailId);
+            emailService.deleteMail(emailId)
+                .then(emails=>{
+                    this.$emit('deleted',true)
+                    eventBus.$emit('update-percent');
+                });
         },
         emailToKeep(email){
-            // eventBus.$emit('email-toKeep',email)
             emailService.saveEmailToStorage(email)
         }
-
+    },
+    created(){
+        emailService.readEmail(this.email.id)
+        
     }
 
 }
