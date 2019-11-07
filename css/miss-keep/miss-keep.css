@@ -9,7 +9,7 @@
     border: 1px solid black;
 }
 
-.add-note button {
+.type-btn {
     height: 40px;
     width: 40px;
     background-color: white;
@@ -21,11 +21,13 @@
     outline: none;
 }
 
-.add-note button.select {
+.add-note>button.select {
     opacity: 1;
 }
 
 .add-btn {
+    height: 20px;
+    width: 100px;
     opacity: 1;
     display: block;
 }
@@ -34,7 +36,7 @@
     height: 80%;
 }
 
-.add-note input {
+.add-note>input {
     height: 40px;
     border-radius: 0;
 }
@@ -47,7 +49,7 @@
     margin-left: 10px;
     margin-right: 10px;
     grid-template-columns: auto auto auto;
-    gap: 20px; 
+    gap: 20px;
 }
 
 .img-note {

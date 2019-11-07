@@ -1,6 +1,7 @@
 'use strict'
 
 import keepService from "../service/miss-keep.service.js"
+import { eventBus } from '../../../general-service/event-bus-service.js'
 
 import textNote from '../cmps/text-note.cmp.js'
 import noteImg from '../cmps/note-img.cmp.js'
@@ -22,11 +23,15 @@ export default {
     methods: {
         updateNote(details) {
             keepService.updateNote(details)
+        },
 
-        }
     },
     created() {
         this.notes = keepService.getNotes();
+        eventBus.$on('email-toKeep', email => {
+            console.log(email);
+            
+        })
     },
     components: {
         textNote,

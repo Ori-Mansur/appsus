@@ -5,7 +5,8 @@ export default {
     addNewNote,
     getNotes,
     updateNote,
-    getNoteById
+    getNoteById,
+    editNote
 }
 var gNextId = 104
 var gNotes = [{
@@ -53,18 +54,14 @@ function addNewNote(type, val, color) {
             return { id: '', isDone: false, todo }
         })
     }
-    console.log(info);
     if (type === 'note-video') info = _getParameterByName('v', val)
     gNotes.unshift({ id: gNextId++, type, info, color })
-    // console.log(gNotes);
-
     return Promise.resolve()
 }
 
 function updateNote(details) {
     console.log(details);
     if (details.type === 'remove') removeNote(details)
-    else if (details.type === 'edit') editNote(details)
     else if (details.type === 'pin') pinNote(details)
     else changeNoteColor(details)
 }
@@ -76,9 +73,10 @@ function removeNote(details) {
     var idx = gNotes.findIndex(note => details.id === note.id)
     gNotes.splice(idx, 1)
 }
-function editNote(details) {
-    var idx = gNotes.find(note => details.id === note.id)
-
+function editNote(id, type, info, color) {
+    var idx = gNotes.findIndex(note => id === note.id)
+    gNotes.splice(idx, 1, { id, type, info, color })
+    return Promise.resolve()
 }
 
 function _getParameterByName(name, url) {
