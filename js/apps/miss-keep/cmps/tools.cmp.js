@@ -4,10 +4,10 @@ export default {
     props: ['noteId'],
     template: `
     <section class="action-btn-container">
-    <input type="color" @change="updateNote(color)" v-model="color"/>
-    <button @click="updateNote('remove')">🗑</button>
-    <button @click="updateNote('edit')">✎</button>
-    <button @click="updateNote('pin')">	&#x1f4cc;</button>
+    <input type="color" @change="updateNote(color)" v-model="color" class="tools-input-color"/>
+    <button @click="updateNote('remove')" class="tools-btn">🗑</button>
+    <button @click="updateNote('edit')" class="tools-btn">✎</button>
+    <button @click="updateNote('pin')" class="tools-btn">&#x1f4cc;</button>
     </section>
     `,
     data() {
