@@ -1,19 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-body{
-    margin: 0;
-}
 
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: brown;
-}
-header h1{
-    margin: 0;
-}
+
 
 
 ul {
@@ -31,12 +17,7 @@ li {
     max-height: 400px;
 }
 
-input {
-    height: 20px;
-    border-radius: 12px;
-    border: 1px solid black;
-    text-align: center;
-}
+
 textarea{
     border-radius: 12px; 
 }

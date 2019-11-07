@@ -4,7 +4,7 @@ import tools from './tools.cmp.js'
 export default {
     props: ['note'],
     template: `
-          <section class="img-note" :style="{'background-color':note.color}">
+          <section class="img-note note-container" :style="{'background-color':note.color}">
           <img :src="note.info"/>
           <tools :noteId="note.id" @update="updateNote"></tools>
           </section>
@@ -16,9 +16,7 @@ export default {
     },
     methods: {
         updateNote(details) {
-            console.log(details);
             this.$emit('update', details);
-
         },
 
     },
