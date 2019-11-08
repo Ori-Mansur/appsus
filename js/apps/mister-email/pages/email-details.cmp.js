@@ -34,9 +34,10 @@ export default {
                 })
         },
         replayEmail(email){
-            this.$router.push(`compose/${email.id}`)
-            
-
+            emailService.showMoreFromEmail(this.$route.params.id)
+                .then(()=>{
+                    this.$router.push(`compose/${email.id}`)
+                })
         }
     },
     created() {

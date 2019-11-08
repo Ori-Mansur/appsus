@@ -11,7 +11,7 @@ export default {
     template:`
     <li  class="mail-container" :class="isRead">
         <p class="subject">{{isEmptySubject}}</p>
-        <long-text @starred="makeEmailStarred" class="body" :txt="isEmptyBody"></long-text>
+        <long-text @edit-draft="editDraftMail" @toggle-read="toggleRead" @starred="makeEmailStarred" class="body" :txt="isEmptyBody" :valid="isValid" :read="email.isRead" :starred="isStarred"></long-text>
     </li>`
     ,
     computed: {
@@ -25,16 +25,47 @@ export default {
         },
         isRead(){
             return{'unread-mail': !this.email.isRead};
+        },
+        isValid(){
+            if(this.email.type === 'inbox'||this.email.type === 'starred') return true;
+            return false;
+        },
+        isStarred(){
+            if(this.email.type === 'starred') return true;
+            return false;
         }
+
     },
     methods:{
         makeEmailStarred(){
-            console.log('email is starred!');
-            emailService.starredEmail(this.email.id)
-                
-
             
+            
+            emailService.starredEmail(this.email.id)
+                .then(()=>{
+                    var starredPath = this.$route.path
+                    if(starredPath.includes('starred')){
+                        this.$emit('render-starred')
+                    }
+                    else{
+                        if(this.email.type !== 'starred') return
+                        var msg ={
+                            txt: 'Email is marked in Starred',
+                            type: 'email-marked'
+                        }
+                        eventBus.$emit('show-msg',msg);   
+                    }
+                }) 
+        },
+        toggleRead(){
+            emailService.toggleReadEmail(this.email.id)
+                .then(()=>{ 
+                    eventBus.$emit('update-percent');
+                }) 
+        },
+        editDraftMail(){
+            this.$router.push(`compose/${this.email.id}/edit`)  
         }
+        
     },
     components:{
         longText

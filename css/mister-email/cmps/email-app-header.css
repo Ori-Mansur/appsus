@@ -2,7 +2,7 @@
 
 
 .email-app-header-container{
-    padding-right: 10%;
+    padding-right: 7%;
     padding-left: 13px;
 }
 
@@ -22,4 +22,25 @@
     color: black;
     font-size: large;
     font-weight: 600;
+}
+
+
+.unread-mails-counter{
+    font-size: 14px;
+}
+
+.compose{
+    position: absolute;
+    top: 80px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    left:5px;
+}
+
+.compose a{
+    text-decoration: none;
+    color: #414195;
+    text-decoration: none;
+    font-weight: bold;
 }

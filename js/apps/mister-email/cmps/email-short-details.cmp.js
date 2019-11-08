@@ -10,7 +10,10 @@ export default {
     template:`
     <section class="emails-short-details-container">
         <div class="btn-short-details">
-            <button @click="deleteEmail(email.id)"><img  src="../../../img/garbage.png"/></button><router-link :to="'email/'+email.id"><button v-if="checkEmailType"><img src="../../../img/msg.png"/></button></router-link><button @click="emailToKeep(email)"><img src="../../../img/pinmail.png"/></button></div>
+            <router-link v-if="email.type!== 'draft'" :to="'email/'+email.id"><button v-if="checkEmailType">✉</button></router-link>
+            <button v-if="email.type!== 'draft'" @click="emailToKeep(email)">✒</button>
+            <button @click="deleteEmail(email.id)">🗑</button>
+        </div>
         <p class="short-subject">{{email.subject}}</p>
         <!-- <p>{{email.body}}</p> -->
         <long-text :txt="email.body" :show="email.isShowingMore"></long-text>
@@ -26,6 +29,11 @@ export default {
         },
         emailToKeep(email){
             emailService.saveEmailToStorage(email)
+            var msg = {
+               txt: 'Email was sent to notes',
+               type: 'email-notes'
+            }
+            eventBus.$emit('show-msg',msg)
         },
     },
     computed:{

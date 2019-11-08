@@ -29,9 +29,18 @@ export default {
             this.email.type = this.checkEmailData();
             emailService.addNewMail(this.email)
                     .then(()=>{
-                        const msg = {
-                            txt: 'New email was sent',
-                            type: 'seccuss'
+                        var msg;
+                        if(this.email.type === 'draft'){
+                            msg = {
+                                txt: 'Email was sent to draft',
+                                type: 'draft'
+                            }
+                        }
+                        else if(this.email.type === 'inbox'){
+                            msg = {
+                                txt: 'New email was sent',
+                                type: 'seccuss'
+                            }
                         }
                         eventBus.$emit('show-msg',msg)
                         setTimeout(()=>{
@@ -49,10 +58,22 @@ export default {
         }
     },
     created () {
-        const emailId = this.$route.params.id;
-        console.log(emailId);
-        
-        if(emailId)
+        var regex = new RegExp('edit');
+        var isEditing = regex.test(this.$route.path);
+            
+        const emailId = this.$route.params.id;   
+
+        if(emailId && isEditing)
+        emailService.getEmailById(emailId)
+            .then(email =>{
+                    this.email.subject = 'Edit: '+email.subject;
+                    this.email.body = email.body;
+                    this.email.id = email.id
+                    console.log(email);
+                    
+                })
+            
+        else if(emailId)
             emailService.getEmailById(emailId)
                 .then(email =>{
                     this.email.subject = 'RE: '+email.subject;
@@ -65,7 +86,11 @@ export default {
     },
     watch: {
         '$route.params.id'() {
+            console.log(this.$route.path);
+            
             const emailId = this.$route.params.id;
+            
+            
             if(!emailId) {
                 this.email = {}
             }

@@ -1,15 +1,30 @@
 
 .user-msg-container{
     position: absolute;
-    top: 70px;
+    top: 0;
     right: 50%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    font-weight: 700;
+    padding: 15px;
+
 }
 
 .seccuss{
-    background-color: lightGreen;
+    background-color: #5180b9ea;
 }
 
-.failure{
-    background-color: lightCoral;
+.draft{
+    background-color: rgba(44, 43, 43, 0.87);
+}
+
+.email-notes{
+    background-color: rgba(255, 244, 198, 0.815);
+    color: rgba(49, 48, 48, 0.931)
+}
+
+.email-marked{
+    background-color: rgba(164, 226, 164, 0.836);
 }
 
