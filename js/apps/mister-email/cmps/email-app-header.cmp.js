@@ -8,7 +8,9 @@ export default {
         <nav>
             <router-link to="/email">Inbox</router-link> 
             <router-link to="/email/draft">Drafts</router-link>
+            <router-link to="/email/starred">Starred</router-link>
             <router-link to="/email/compose">Compose</router-link> 
+
         </nav>
         <email-status></email-status>
     </section>`,

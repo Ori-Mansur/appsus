@@ -24,17 +24,16 @@ export default {
         loadEmail() {
             const emailId = this.$route.params.id;
             emailService.getEmailById(emailId)
-                .then(email => {
-                    console.log(email);
-                    
+                .then(email => {                    
                     this.email = email;}); 
         },
         returnToEmails(){
-            console.log('!!!');
-            this.$router.push('/email')
+            emailService.showMoreFromEmail(this.$route.params.id)
+                .then(()=>{
+                    this.$router.push('/email')
+                })
         },
         replayEmail(email){
-            console.log(email);
             this.$router.push(`compose/${email.id}`)
             
 

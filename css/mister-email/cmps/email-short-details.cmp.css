@@ -1,8 +1,10 @@
 .emails-short-details-container{
-    background-color: #4e5d586b;
-    border-radius: 11px;
+    background-color: #90bbc559;
     padding: 12px;
-    width: 90%;
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top: 1px solid #53474766;
 
 }
 

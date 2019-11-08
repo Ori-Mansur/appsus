@@ -34,6 +34,10 @@ const myRoutes = [
                 component: emailList
             },
             {
+                path: 'starred',
+                component: emailList
+            },
+            {
                 path: 'compose/:id?',
                 component: emailCompose,
 

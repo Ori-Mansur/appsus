@@ -14,7 +14,8 @@ export default {
     saveEmailToStorage,
     getEmialsByType,
     readEmail,
-    getEmailsAmount
+    getEmailsAmount,
+    starredEmail
 }
 
 
@@ -124,7 +125,7 @@ function saveEmailToStorage(email){
 }
 
 function getEmailsAmount(){
-    var inboxEmails = gEmails.filter(email => email.type === 'inbox');
+    var inboxEmails = gEmails.filter(email => (email.type === 'inbox' ||email.type === 'starred'));
     var length = inboxEmails.length
     var unread = 0;
     for(var i =0;i<gEmails.length;i++){
@@ -135,7 +136,9 @@ function getEmailsAmount(){
 
 
 function getEmialsByType(type){    
-    var emails = gEmails.filter(email => email.type === type);    
+    var emails; 
+    if(type === 'inbox')  emails = gEmails.filter(email => (email.type === type ||email.type === 'starred')); 
+    else  emails = gEmails.filter(email => email.type === type);
     return Promise.resolve(emails);
 }
 
@@ -144,6 +147,18 @@ function readEmail(emailId){
         .then(email => {
             email.isRead = true;
             storageService.store(MAIL_KEY,gEmails);
+        })
+}
+
+function starredEmail(emailId){
+    return getEmailById(emailId)
+        .then(email => {
+            if(email.type === 'starred') email.type = 'inbox'
+            else email.type = 'starred';
+            console.log(email);
+            
+            storageService.store(MAIL_KEY,gEmails);
+            return Promise.resolve()
         })
 }
 
@@ -157,7 +172,7 @@ function _createMails(){
             isRead: true,
             isShowingMore: false,
             sentAt : 1551133930843,
-            type: 'draft'
+            type: 'draft',
         },
         {
             id: makeId(),
@@ -166,7 +181,8 @@ function _createMails(){
             isRead: true,
             isShowingMore: false,
             sentAt : 1551133933968,
-            type: 'draft'
+            type: 'draft',
+
         },
         {
             id: makeId(),
@@ -175,7 +191,7 @@ function _createMails(){
             isRead: false,
             isShowingMore: false,
             sentAt : 1551137340276,
-            type: 'inbox'
+            type: 'inbox',
         },
         {
             id: makeId(),
@@ -184,7 +200,7 @@ function _createMails(){
             isRead: true,
             isShowingMore: false,
             sentAt : 1551133910276,
-            type: 'inbox'
+            type: 'inbox',
         },
         {
             id: makeId(),
@@ -193,7 +209,7 @@ function _createMails(){
             isRead: false,
             isShowingMore: false,
             sentAt : 1551133910116,
-            type: 'inbox'
+            type: 'inbox',
         }
     ];
     return mails;

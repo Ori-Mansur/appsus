@@ -12,9 +12,11 @@ import {eventBus} from '../../../general-service/event-bus-service.js'
 export default {
     template:`
     <section class="email-list-container">
-        <email-filter v-if="checkEmailsType"></email-filter>
+        <email-filter v-if="checkEmailsType === 'inbox'"></email-filter>
+        <p v-else-if="checkEmailsType === 'draft'" class="draft-list">Drafts</p>
+        <p v-else-if="checkEmailsType=== 'starred'" class="draft-list">Starred</p>
         <ul class="email-list" v-for="email in emails" :key="email.id">
-            <email-preview @click.native="showMore(email.id)" :email="email"></email-preview>
+            <email-preview :class="{showing: email.isShowingMore}" @click.native="showMore(email.id)" :email="email"></email-preview>
             <email-short @deleted="emailsToShow" v-if="email.isShowingMore" :email="email" :filter="filterBy"></email-short>
         </ul>
     </section>`,
@@ -31,8 +33,9 @@ export default {
     },
     computed:{
         checkEmailsType(){
-            if(this.emailsType === 'inbox') return true;
-            return false;
+            if(this.emailsType === 'inbox') return 'inbox';
+            else if(this.emailsType === 'draft') return 'draft';
+            else return 'starred'
         }
 
     },
@@ -74,6 +77,13 @@ export default {
                 emailService.getEmialsByType(this.emailsType)
                     .then(emails => this.emails = emails);
                 
+            }
+            else if(to.path === '/email/starred'){                
+                this.emailsType = 'starred';                
+                emailService.getEmialsByType(this.emailsType)
+                    .then(emails => {
+                        this.emails = emails;                        
+                    });
             }
             else{
                 this.emailsType = 'inbox'

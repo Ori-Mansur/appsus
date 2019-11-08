@@ -7,6 +7,8 @@
 @import './mister-email/cmps/email-status.css';
 @import './mister-email/cmps/email-short-details.cmp.css';
 @import './mister-email/pages/email-list.css';
+@import './mister-email/cmps/email-filter.css';
+@import './mister-email/cmps/long-text.css';
 @import './miss-keep/miss-keep.css';
 @font-face {
     font-family: Montserrat;

@@ -1,6 +1,7 @@
 'use strict'
 
 import {eventBus} from '../../../general-service/event-bus-service.js'
+import emailService from '../services/email-service.js'
 import longText from '../cmps/long-text.cmg.js'
 
 
@@ -10,7 +11,7 @@ export default {
     template:`
     <li  class="mail-container" :class="isRead">
         <p class="subject">{{isEmptySubject}}</p>
-        <long-text class="body" :txt="isEmptyBody"></long-text>
+        <long-text @starred="makeEmailStarred" class="body" :txt="isEmptyBody"></long-text>
     </li>`
     ,
     computed: {
@@ -24,6 +25,15 @@ export default {
         },
         isRead(){
             return{'unread-mail': !this.email.isRead};
+        }
+    },
+    methods:{
+        makeEmailStarred(){
+            console.log('email is starred!');
+            emailService.starredEmail(this.email.id)
+                
+
+            
         }
     },
     components:{

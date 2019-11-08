@@ -4,7 +4,7 @@ import { eventBus } from "../../../general-service/event-bus-service.js"
 
 export default {
     template:`
-    <section>
+    <section class="email-filter-container">
         <input type ="text" placeholder="Search email" v-model="filterBy.searchKey"/>
         All:<input type ="radio" value="allEmails" v-model="filterBy.searchType"/>
         Read:<input type ="radio" value="readEmails" v-model="filterBy.searchType"/>
