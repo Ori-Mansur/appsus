@@ -7,7 +7,7 @@ import {eventBus} from '../../../general-service/event-bus-service.js'
 export default {
     template:`
     <section class="email-compose-container">
-        <h2>New Message</h2>
+        <p class="new-msg">New Message</p>
         <form @submit.prevent="sendEmail">
             <input type="text" placeholder="To: Myself">
             <input type="text" placeholder="Subject:" v-model="email.subject">

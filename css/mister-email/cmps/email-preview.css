@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     max-width: 100%;
+    padding-top: 13px;
 }
 
 .unread-mail{
@@ -12,7 +13,7 @@
 
 
 .subject{
-    font-size: 15.5px;
+    font-size: 15px;
     margin-bottom: 0;
 }
 

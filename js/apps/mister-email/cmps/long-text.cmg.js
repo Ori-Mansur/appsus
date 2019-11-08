@@ -32,10 +32,10 @@ export default {
             return '☐'
         },
         getStarredColor(){
-            if(this.starred) return '#467c92fc'; 
+            if(this.starred) return '#080346fc'; 
         },
         getUnreadColor(){
-            if(!this.read) return '#467c92fc';
+            if(!this.read) return '#020238e0';
         }
         
     },
