@@ -1,3 +1,27 @@
 .email-filter-container{
     padding: 15px;
+    position: absolute;
+    background-color: #ffffffbd;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #414195; 
+    font-weight: bold;
+    top: -60px;
+    width: 100%;   
+
+}
+
+.email-search{
+    padding: 5px;
+    border-style: none;
+    box-shadow: 0px 1px 0px #0e0023ba;
+    font-family: Montserrat;
+}
+
+.email-filter-container select{
+    width: 15%;
+    outline:none;
+    font-family: Montserrat;
 }

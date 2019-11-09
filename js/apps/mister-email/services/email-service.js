@@ -15,7 +15,8 @@ export default {
     getEmialsByType,
     readEmail,
     getEmailsAmount,
-    starredEmail
+    starredEmail,
+    toggleReadEmail
 }
 
 
@@ -98,19 +99,34 @@ function sortEmails(sort,emails){
 }
 
 function addNewMail(email){
-    var newEmail = {
-        id: makeId(),
-        subject: email.subject,
-        body: email.body,
-        isRead: false,
-        isShowingMore: false,
-        sentAt: Date.now(),
-        type: email.type
+    if(email.id){        
+        return getEmailById(email.id)
+            .then(draftMail =>{
+                draftMail.subject = email.subject;
+                draftMail.body = email.body;
+                draftMail.isRead = false;
+                draftMail.isShowingMore = false;
+                draftMail.sentAt = Date.now();
+                draftMail.type = email.type
+                if(email.type === 'draft') draftMail.isRead = true;
+                storageService.store(MAIL_KEY,gEmails);
+                return Promise.resolve();
+            })
+    } else {
+        var newEmail = {
+            id: makeId(),
+            subject: email.subject,
+            body: email.body,
+            isRead: false,
+            isShowingMore: false,
+            sentAt: Date.now(),
+            type: email.type
+        }
+        if(email.type ==='draft') newEmail.isRead = true;
+        gEmails.unshift(newEmail);
+        storageService.store(MAIL_KEY,gEmails);
+        return Promise.resolve();
     }
-    if(email.type ==='draft') newEmail.isRead = true;
-    gEmails.unshift(newEmail);
-    storageService.store(MAIL_KEY,gEmails);
-    return Promise.resolve();
 }
 
 function deleteMail(emailId){
@@ -154,13 +170,22 @@ function starredEmail(emailId){
     return getEmailById(emailId)
         .then(email => {
             if(email.type === 'starred') email.type = 'inbox'
-            else email.type = 'starred';
-            console.log(email);
-            
+            else email.type = 'starred';            
             storageService.store(MAIL_KEY,gEmails);
             return Promise.resolve()
         })
 }
+
+function toggleReadEmail(emailId){
+    return getEmailById(emailId)
+        .then(email => {
+            email.isRead = !email.isRead;
+            storageService.store(MAIL_KEY,gEmails);
+            return Promise.resolve();
+        })
+}
+
+
 
 
 function _createMails(){
@@ -186,7 +211,7 @@ function _createMails(){
         },
         {
             id: makeId(),
-            subject: 'Hi are you with Angular?',
+            subject: 'Hi are you with Angulldkkdar?',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: false,
             isShowingMore: false,
@@ -195,7 +220,7 @@ function _createMails(){
         },
         {
             id: makeId(),
-            subject: 'Wassap with Angular?',
+            subject: 'sap apiis hhwwed with Angular?',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: true,
             isShowingMore: false,
@@ -204,11 +229,38 @@ function _createMails(){
         },
         {
             id: makeId(),
-            subject: 'we did it with Angular?',
+            subject: 'we did it witsjllh Awwi29399ar?',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: false,
             isShowingMore: false,
-            sentAt : 1551133910116,
+            sentAt : 1551133493016,
+            type: 'starred',
+        },
+        {
+            id: makeId(),
+            subject: 'we dww0jsjsjjj lhassssngular?',
+            body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
+            isRead: false,
+            isShowingMore: false,
+            sentAt : 1551133922216,
+            type: 'inbox',
+        },
+        {
+            id: makeId(),
+            subject: 'we ?',
+            body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
+            isRead: false,
+            isShowingMore: false,
+            sentAt : 1551102910116,
+            type: 'starred',
+        },
+        {
+            id: makeId(),
+            subject: 'you did it!!!!?',
+            body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
+            isRead: false,
+            isShowingMore: false,
+            sentAt : 15511339769116,
             type: 'inbox',
         }
     ];

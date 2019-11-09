@@ -2,8 +2,9 @@
 
 
 .email-app-header-container{
-    padding-right: 10%;
+    padding-right: 7%;
     padding-left: 13px;
+    /* background-color: #fdffff2b; */
 }
 
 
@@ -22,4 +23,35 @@
     color: black;
     font-size: large;
     font-weight: 600;
+}
+
+
+.unread-mails-counter{
+    font-size: 14px;
+}
+
+.compose{
+    position: absolute;
+    top:108px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 20px;
+    left:5px;
+}
+
+.compose a{
+    text-decoration: none;
+    color: #414195;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.inbox-link:focus , .inbox-link:active{
+    color: #3d00ac;
+}
+.draft-link:focus , .draft-link:active{
+    color: #3d00ac;
+}
+.starred-link:focus , .starred-link:active{
+    color: #3d00ac;
 }

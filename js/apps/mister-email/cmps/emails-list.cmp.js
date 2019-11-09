@@ -15,8 +15,8 @@ export default {
         <email-filter v-if="checkEmailsType === 'inbox'"></email-filter>
         <p v-else-if="checkEmailsType === 'draft'" class="draft-list">Drafts</p>
         <p v-else-if="checkEmailsType=== 'starred'" class="draft-list">Starred</p>
-        <ul class="email-list" v-for="email in emails" :key="email.id">
-            <email-preview :class="{showing: email.isShowingMore}" @click.native="showMore(email.id)" :email="email"></email-preview>
+        <ul class="email-list" v-for="email in emails" :key="email.id" :class="{showing: email.isShowingMore}">
+            <email-preview @render-starred="emailsToShow"  @click.native="showMore(email.id)" :email="email"></email-preview>
             <email-short @deleted="emailsToShow" v-if="email.isShowingMore" :email="email" :filter="filterBy"></email-short>
         </ul>
     </section>`,
@@ -55,7 +55,11 @@ export default {
                         return this.emails;
                     })
             } 
-        },  
+        },
+        showStarred(){
+            console.log('!!!');
+            
+        }  
     },
 
     created(){
@@ -68,7 +72,30 @@ export default {
                     this.filterBy.sortBy = filterBy.sortBy;
                     this.emailsToShow();    
                 });
-            });     
+            });   
+
+        
+        var isNewCreated = this.$route.path
+        if(isNewCreated){
+            if(isNewCreated.includes('starred')){
+                this.emailsType = 'starred';                
+                emailService.getEmialsByType(this.emailsType)
+                    .then(emails => {
+                        this.emails = emails;                        
+                    });
+            }
+            else if(isNewCreated.includes('draft')){
+                this.emailsType = 'draft';
+                emailService.getEmialsByType(this.emailsType)
+                    .then(emails => this.emails = emails);
+            }
+                
+                
+        }
+        
+        
+
+
     },
     watch: {
         $route(to){

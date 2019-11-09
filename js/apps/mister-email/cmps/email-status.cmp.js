@@ -19,6 +19,7 @@ export default {
     },
     computed:{
         showUnread(){
+            eventBus.$emit('update-unread',this.unreadCounter)
             var percent = 100 - Math.floor((this.unreadCounter / this.emailAmount) * 100) 
             return percent+'%'
         }
@@ -31,7 +32,7 @@ export default {
                 this.emailAmount = mailData.length;
   
             })
-        eventBus.$on('update-percent',()=>{
+        eventBus.$on('update-percent',()=>{            
             emailService.getEmailsAmount()
             .then(mailData =>{                
                 this.unreadCounter = mailData.unread;

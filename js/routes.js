@@ -49,6 +49,13 @@ const myRoutes = [
             {
                 path: 'compose/:id?',
                 component: emailCompose,
+                children: [
+                    {
+                        path: 'edit',
+                        component: emailCompose
+                    }
+
+                ]
 
             },
             {
