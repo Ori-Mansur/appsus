@@ -15,6 +15,11 @@
     src: url(../fonts/Montserrat-Regular.ttf);
 }
 
+@font-face {
+    font-family: PlayfairDisplay;
+    src: url(../fonts/PlayfairDisplay-Italic.ttf);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -84,15 +89,144 @@ nav {
     margin: 0 auto;
 }
 
+.main-area {
+    max-width: 620px;
+    display: flex;
+    flex-wrap: wrap;
+    align-self: flex-start;
+    z-index: 2;
+}
+
+.main-area img {
+    width: 50%;
+}
+
 .logo {
     font-size: 34px;
     font-weight: 700;
     letter-spacing: -1.03px;
 }
 
+.main-home-page {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.main-sentence {
+    font-family: PlayfairDisplay;
+    font-size: 40px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.sec-sentence {
+    font-family: PlayfairDisplay;
+    font-size: 24px;
+    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.64);
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 100px;
+    font-weight: 400;
+}
+
+.main-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* grid-template-columns: auto auto auto; */
+    /* gap: 20px; */
+}
+
+.main-card-a {
+    display: block;
+    height: 340px;
+    width: 270px;
+    background-color: white;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+}
+
+.main-card-a:not(:first-child) {
+    margin-left: 20px;
+}
+
+@media screen and (max-width:600px) {
+    .main-card-a {
+        margin-left: 0;
+        width: 85%;
+        height: fit-content;
+    }
+    .main-card-a:not(:first-child) {
+        margin-left: 0px;
+    }
+}
+
+.main-card-a h3 {
+    margin: 0;
+    display: inline;
+}
+
 .main-footer {
     height: 200px;
     background-color: #000000;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.main-footer li {
+    line-height: 34px;
+}
+
+.main-footer ul {
+    margin-top: 25px;
+    margin-right: 50px;
+}
+
+.wave-col {
+    margin-top: 39px;
+    height: 108px;
+    width: 19px;
+}
+
+.about-sentence {
+    opacity: 0.5;
+    color: #000000;
+    font-family: Montserrat;
+    font-size: 70px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.about-content{
+    
+}
+.main-about-container {
+    align-self: flex-start;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.main-about-container h3{
+    width:341px ;
+    text-transform: uppercase;
+   
+}
+.about-main-img{
+    width: 50%;
+    align-self: flex-end;
+}
+
+.main-about-container p {
+    width: 341px;
+    height: 288px;
+    font-family: PlayfairDisplay;
+    font-size: 22px;
+    line-height: 38px;
 }
 
 @media screen and (max-width: 960px) {
