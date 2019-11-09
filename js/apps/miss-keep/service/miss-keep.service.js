@@ -78,7 +78,14 @@ function addNewNote(note) {
 function updateNote(details) {
     if (details.type === 'remove') removeNote(details)
     else if (details.type === 'pin') pinNote(details)
+    else if (details.type === 'send') sendNote(details)
     else changeNoteColor(details)
+    return Promise.resolve()
+}
+function sendNote(details){
+    var note = gNotes.find(note => details.id === note.id)
+    utilsService.store('note toEmail',note)
+    return Promise.resolve()
 }
 function pinNote(details) {
     var note = gNotes.find(note => details.id === note.id)
