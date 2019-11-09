@@ -15,6 +15,10 @@
     font-family: Montserrat;
     src: url(../fonts/Montserrat-Regular.ttf);
 }
+@font-face {
+    font-family: MontserratBold;
+    src: url(../fonts/Montserrat-Bold.ttf);
+}
 
 @font-face {
     font-family: PlayfairDisplay;
@@ -104,8 +108,9 @@ nav {
 }
 
 .logo {
+    font-family: MontserratBold;
     font-size: 34px;
-    font-weight: 700;
+    font-weight: 1900;
     letter-spacing: -1.03px;
 }
 
@@ -201,9 +206,7 @@ nav {
     font-weight: 700;
     text-transform: uppercase;
 }
-.about-content{
-    
-}
+
 .main-about-container {
     align-self: flex-start;
     display: flex;
