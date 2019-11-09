@@ -8,11 +8,13 @@ import {eventBus} from '../../../general-service/event-bus-service.js'
 export default {
     template:`
     <section class="email-details-container" v-if="email">
-        <h2>{{email.subject}}</h2>
+        <h2 class="subject-details">{{email.subject}}</h2>
         <h4>{{email.body}}</h4>
         <h6>Sent: {{new Date(email.sentAt)}}</h6>
-        <button @click="returnToEmails">return</button>
-        <button @click="replayEmail(email)">Replay</button>
+        <div class="btn-details-container">
+            <button class="btn-details" @click="returnToEmails">↩</button>
+            <button class="btn-details" @click="replayEmail(email)" >Reply</button>
+        </div>
     </section>
     `,
     data(){

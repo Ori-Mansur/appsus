@@ -15,8 +15,8 @@ export default {
         <email-filter v-if="checkEmailsType === 'inbox'"></email-filter>
         <p v-else-if="checkEmailsType === 'draft'" class="draft-list">Drafts</p>
         <p v-else-if="checkEmailsType=== 'starred'" class="draft-list">Starred</p>
-        <ul class="email-list" v-for="email in emails" :key="email.id">
-            <email-preview @render-starred="emailsToShow" :class="{showing: email.isShowingMore}" @click.native="showMore(email.id)" :email="email"></email-preview>
+        <ul class="email-list" v-for="email in emails" :key="email.id" :class="{showing: email.isShowingMore}">
+            <email-preview @render-starred="emailsToShow"  @click.native="showMore(email.id)" :email="email"></email-preview>
             <email-short @deleted="emailsToShow" v-if="email.isShowingMore" :email="email" :filter="filterBy"></email-short>
         </ul>
     </section>`,

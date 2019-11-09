@@ -4,16 +4,24 @@
     justify-content: space-between;
 }
 
-.starred{
-    background-color: #ffffff00;
-    border-color: none;
-    
+.long-text-btn-container{
+    display: flex;
+    flex-direction: row;
 }
 
 .long-text-btn-container button{
     border-style: none;
-    background-color: rgba(255, 255, 255, 0);
-    font-size: 20px;
-    color: #020238e0;
+    background: none;
+    color: #000000c4;
     outline: none;
+}
+.btn-starred{
+    font-size:20px;
+
+}
+
+.btn-read{
+    font-size: 15px;
+    padding-bottom: 2px;
+
 }

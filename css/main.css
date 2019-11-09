@@ -9,6 +9,7 @@
 @import './mister-email/pages/email-list.css';
 @import './mister-email/cmps/email-filter.css';
 @import './mister-email/cmps/long-text.css';
+@import './mister-email/pages/email-details.css';
 @import './miss-keep/miss-keep.css';
 @font-face {
     font-family: Montserrat;
@@ -33,6 +34,7 @@ a {
 
 button {
     cursor: pointer;
+    outline: none;
 }
 
 html {

@@ -4,7 +4,9 @@
     display: flex;
     flex-direction: column;
     max-width: 100%;
-    padding-top: 13px;
+    padding-top: 20px;
+    /* box-shadow: 0px 1px 0px #0000008a; */
+    box-shadow: 1px 2px 0px #00000036;
 }
 
 .unread-mail{
@@ -22,9 +24,9 @@
     margin-top:5px;
 }
 
-.showing{
+/* .showing{
     background-color: #d1e3dd73;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     box-shadow: 0px 1px 2px #a5a2a2;
-}
+} */

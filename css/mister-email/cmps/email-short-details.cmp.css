@@ -1,16 +1,18 @@
 .emails-short-details-container{
     background-color: #90bbc559;
-    padding: 1px 10px 10px;
+    padding: 5px 10px 10px;
     width: 100%;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top: 1px solid #53474766;
+    height: 80px;
+    position: relative;
 
 }
 
 .emails-short-details-container button{
     background-color: none;
-    border-radius: 20px;
+    border-radius: 17px;
     border-style: none;
 }
 
@@ -18,17 +20,18 @@
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
-    height:7px;
+    position: absolute;
+    right: 0;
 }
 
 
 .btn-short-details button{
     background-color:#b5bbb900;
-    font-size: 25px;
     font-weight: bolder;
-    color: #00000091;
+    /* color: #00000091; */
     box-shadow: 0 0 black;
     text-shadow: 0px 0px 1px white;
+    color: #030307e0;
 }
 
 .short-subject{
@@ -36,3 +39,19 @@
     margin: 0 0 5px;
     font-size: 20px;
 }
+
+
+.email-note-details{
+    font-size: 15px;
+}
+
+.email-delete-details{
+    font-size: 25px;
+
+}
+
+.email-read-details{
+    font-size: 15px;
+    padding-top: 7.1px;
+}
+

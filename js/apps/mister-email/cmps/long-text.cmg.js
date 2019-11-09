@@ -11,8 +11,8 @@ export default {
         <p>{{showTxt}}</p>
         <div class="long-text-btn-container">
             <button v-if="!show && !valid" @click.stop="editDraft">✎</button>
-            <button v-if="!show && valid" @click.stop="makeStarred" class="starred" v-bind:style="{ color: getStarredColor }">{{isEmailStarred}}</button>
-            <button v-if="!show && valid" @click.stop="readToggle" v-bind:style="{ color: getUnreadColor }">{{isEmailRead}}</button>
+            <button v-if="!show && valid" @click.stop="makeStarred" class="btn-starred" v-bind:style="{ color: getStarredColor }">{{isEmailStarred}}</button>
+            <button v-if="!show && valid" @click.stop="readToggle" class="btn-read" v-bind:style="{ color: getUnreadColor }">{{isEmailRead}}</button>
         </div>
     </section>
      `
@@ -24,15 +24,17 @@ export default {
             else return this.txt
         },
         isEmailRead(){
-            if(this.read) return '☖'
-            return '☗'
+            // if(this.read) return '☖'
+            // return '☗'
+            if(this.read) return '⚪';
+            return '⚫'
         },
         isEmailStarred(){
             if(this.starred) return '☑'
             return '☐'
         },
         getStarredColor(){
-            if(this.starred) return '#080346fc'; 
+            if(this.starred) return '#05031ffc'; 
         },
         getUnreadColor(){
             if(!this.read) return '#020238e0';
