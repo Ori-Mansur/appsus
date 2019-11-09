@@ -27,3 +27,11 @@
     font-family: Montserrat;
     height: 35px;
 }
+
+@media(max-width:630px){
+    .email-details-container{
+        margin-top: 30px;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+}
