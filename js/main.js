@@ -14,7 +14,7 @@ new Vue({
     router: theRouter,
     el: '#appsus',
     template: `
-    <section class="home">
+    <section class="home-page">
     <app-header></app-header>
         <router-view></router-view>
         <app-footer></app-footer>
