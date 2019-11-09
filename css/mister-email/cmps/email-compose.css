@@ -60,3 +60,12 @@
     width: 100px;
     margin-top: 10px;
 }
+
+
+@media(max-width:630px){
+    .email-compose-container{
+        position: absolute;
+        top: 150px;
+
+    }
+}

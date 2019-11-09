@@ -5,7 +5,6 @@
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     border-top: 1px solid #53474766;
-    height: 80px;
     position: relative;
 
 }
@@ -19,16 +18,18 @@
 .btn-short-details{
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
-    position: absolute;
-    right: 0;
+}
+
+.short-details-btn-p{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 
 .btn-short-details button{
     background-color:#b5bbb900;
     font-weight: bolder;
-    /* color: #00000091; */
     box-shadow: 0 0 black;
     text-shadow: 0px 0px 1px white;
     color: #030307e0;
@@ -51,7 +52,10 @@
 }
 
 .email-read-details{
-    font-size: 15px;
-    padding-top: 7.1px;
+    font-size: 25px;
+    /* padding-top: 7.1px; */
 }
 
+.ignore-link{
+    color: #030307e0;
+}

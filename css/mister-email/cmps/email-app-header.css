@@ -55,3 +55,46 @@
 .starred-link:focus , .starred-link:active{
     color: #3d00ac;
 }
+
+
+.links-small-header{
+    display: flex;
+    flex-direction: column;
+    background-color: #b396f487;
+    position: absolute;
+    width: 50%;
+    top: 153px;
+    z-index: 1;
+    height: 170px;
+    justify-content: space-around;
+    left: 77px;
+    box-shadow:inset 1px 1px 18px #506eba;
+}
+
+.cover-links{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: none;
+    height: 100vh;
+    z-index: 1;
+}
+
+
+
+
+.menu-btn{
+        position: absolute;
+        top: 105px;
+        left: 47%;
+        font-size: 30px;
+        font-weight: bold;
+        z-index: 1;
+        color: #270241;
+}
+
+
+.links-small-header a{
+    color: #011c32;
+
+}

@@ -9,14 +9,17 @@ export default {
     props:['email','filter'],
     template:`
     <section class="emails-short-details-container">
+        <p class="short-subject">{{email.subject}}</p>
+        <section class="short-details-btn-p">
+        <long-text :txt="email.body" :show="email.isShowingMore"></long-text>
         <div class="btn-short-details">
-            <router-link v-if="email.type!== 'draft'" :to="'email/'+email.id"><button v-if="checkEmailType" class="email-read-details">⬜</button></router-link>
+            <!-- <router-link v-if="email.type!== 'draft'" :to="'email/'+email.id"><button v-if="checkEmailType" class="email-read-details">❐</button></router-link> -->
+            <button v-if="checkEmailType" class="email-read-details"><router-link v-if="email.type!== 'draft'" :to="'email/'+email.id" class="ignore-link">❐</router-link></button>
+
             <button v-if="email.type!== 'draft'" @click="emailToKeep(email)" class="email-note-details">📝</button>
             <button @click="deleteEmail(email.id)" class="email-delete-details">🗑</button>
         </div>
-        <p class="short-subject">{{email.subject}}</p>
-        <!-- <p>{{email.body}}</p> -->
-        <long-text :txt="email.body" :show="email.isShowingMore"></long-text>
+        </section>
     </section>`
     ,
     methods:{

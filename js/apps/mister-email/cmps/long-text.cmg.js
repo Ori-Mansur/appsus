@@ -10,7 +10,7 @@ export default {
     <section class="long-text-container">
         <p>{{showTxt}}</p>
         <div class="long-text-btn-container">
-            <button v-if="!show && !valid" @click.stop="editDraft">✎</button>
+            <button v-if="!show && !valid" @click.stop="editDraft" class="edit-btn-long-txt">✎</button>
             <button v-if="!show && valid" @click.stop="makeStarred" class="btn-starred" v-bind:style="{ color: getStarredColor }">{{isEmailStarred}}</button>
             <button v-if="!show && valid" @click.stop="readToggle" class="btn-read" v-bind:style="{ color: getUnreadColor }">{{isEmailRead}}</button>
         </div>
