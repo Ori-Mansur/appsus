@@ -62,6 +62,12 @@
 }
 
 
+.from-compose{
+    padding: 7px;
+    font-family: Montserrat;
+    outline: none;
+}
+
 @media(max-width:630px){
     .email-compose-container{
         position: absolute;

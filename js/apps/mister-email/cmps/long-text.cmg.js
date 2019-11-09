@@ -5,10 +5,11 @@
 
 
 export default {
-    props:['txt','show','valid','read','starred'],
+    props:['txt','show','valid','read','starred','link'],
     template:`
     <section class="long-text-container">
-        <p>{{showTxt}}</p>
+        <a @click.stop=""class="link-txt" v-if="link" target="_blank":href="this.txt">{{showTxt}}</a>
+        <p v-else>{{showTxt}}</p>
         <div class="long-text-btn-container">
             <button v-if="!show && !valid" @click.stop="editDraft" class="edit-btn-long-txt">✎</button>
             <button v-if="!show && valid" @click.stop="makeStarred" class="btn-starred" v-bind:style="{ color: getStarredColor }">{{isEmailStarred}}</button>
@@ -38,6 +39,10 @@ export default {
         },
         getUnreadColor(){
             if(!this.read) return '#020238e0';
+        },
+        getLink(){
+            return this.txt
+            
         }
         
     },

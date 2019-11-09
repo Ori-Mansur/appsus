@@ -11,10 +11,14 @@ export default {
     <section class="emails-short-details-container">
         <p class="short-subject">{{email.subject}}</p>
         <section class="short-details-btn-p">
-        <long-text :txt="email.body" :show="email.isShowingMore"></long-text>
+        <long-text :txt="email.body" :show="email.isShowingMore" :link="email.isLink"></long-text>
         <div class="btn-short-details">
             <!-- <router-link v-if="email.type!== 'draft'" :to="'email/'+email.id"><button v-if="checkEmailType" class="email-read-details">❐</button></router-link> -->
-            <button v-if="checkEmailType" class="email-read-details"><router-link v-if="email.type!== 'draft'" :to="'email/'+email.id" class="ignore-link">❐</router-link></button>
+            <!-- <button v-if="checkEmailType" class="email-read-details"><router-link v-if="email.type!== 'draft'" :to="'email/'+email.id" class="ignore-link">❐</router-link></button> -->
+            <button v-if="checkEmailType" class="email-read-details">
+                <router-link v-if="email.type === 'inbox'" :to="'email/'+email.id" class="ignore-link">❐</router-link>
+                <router-link v-else-if="email.type === 'starred'" :to="email.id" class="ignore-link">❐</router-link>
+            </button>
 
             <button v-if="email.type!== 'draft'" @click="emailToKeep(email)" class="email-note-details">📝</button>
             <button @click="deleteEmail(email.id)" class="email-delete-details">🗑</button>
@@ -44,11 +48,6 @@ export default {
                 });
                 }
               })
-            // emailService.deleteMail(emailId)
-            //     .then(emails=>{
-            //         this.$emit('deleted',true)
-            //         eventBus.$emit('update-percent');
-            //     });
         },
         emailToKeep(email){
             emailService.saveEmailToStorage(email)

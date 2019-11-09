@@ -21,7 +21,7 @@ export default {
 
 
 const MAIL_KEY = 'emails';
-
+const NOTE_KEY = 'note toEmail'
 
 var gEmails;
 
@@ -35,7 +35,30 @@ function getMails(){
         storageService.store(MAIL_KEY,mails);
     }
     gEmails = mails;
-    // return Promise.resolve(gEmails);
+}
+
+function getNote(){
+    var note = storageService.load(NOTE_KEY);
+    if(note) {
+        var newMail ={
+            id: makeId(),
+            subject: note.title,
+            body: note.info,
+            isRead: false,
+            isShowingMore: false,
+            sentAt : Date.now(),
+            type: 'inbox',
+            isLink:false,
+            from: 'Myself :)'
+        }
+        
+        if(note.type !=='text-note') newMail.isLink = true;
+        if(note.type === 'note-img') newMail.subject += ' - Img'
+        else if( note.type === 'note-video') newMail.subject += ' - Video'
+        gEmails.unshift(newMail);
+        storageService.store(MAIL_KEY,gEmails);
+        storageService.store(NOTE_KEY,null)
+    }
 }
 
 
@@ -60,7 +83,6 @@ function showMoreFromEmail(emailId){
 }
 
 function getEmailByFilter(key,type,emailsType,sortType){
-    
     return getEmialsByType(emailsType)
         .then(emails => {
         var emails =  sortEmails(sortType,emails)
@@ -107,7 +129,8 @@ function addNewMail(email){
                 draftMail.isRead = false;
                 draftMail.isShowingMore = false;
                 draftMail.sentAt = Date.now();
-                draftMail.type = email.type
+                draftMail.type = email.type,
+                draftMail.from = email.from
                 if(email.type === 'draft') draftMail.isRead = true;
                 storageService.store(MAIL_KEY,gEmails);
                 return Promise.resolve();
@@ -120,7 +143,8 @@ function addNewMail(email){
             isRead: false,
             isShowingMore: false,
             sentAt: Date.now(),
-            type: email.type
+            type: email.type,
+            from: email.from
         }
         if(email.type ==='draft') newEmail.isRead = true;
         gEmails.unshift(newEmail);
@@ -151,7 +175,8 @@ function getEmailsAmount(){
 }
 
 
-function getEmialsByType(type){    
+function getEmialsByType(type){  
+    getNote();  
     var emails; 
     if(type === 'inbox')  emails = gEmails.filter(email => (email.type === type ||email.type === 'starred')); 
     else  emails = gEmails.filter(email => email.type === type);
@@ -201,12 +226,23 @@ function _createMails(){
         },
         {
             id: makeId(),
-            subject: 'Wassap with React?',
+            subject: 'Wassap with Vue?',
+            body: '',
+            isRead: true,
+            isShowingMore: false,
+            sentAt : 1551133930803,
+            type: 'draft',
+            from: 'Dana'
+        },
+        {
+            id: makeId(),
+            subject: '',
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: true,
             isShowingMore: false,
             sentAt : 1551133933968,
             type: 'draft',
+            from:'Muki'
 
         },
         {
@@ -217,6 +253,7 @@ function _createMails(){
             isShowingMore: false,
             sentAt : 1551137340276,
             type: 'inbox',
+            from:'Benny'
         },
         {
             id: makeId(),
@@ -226,6 +263,8 @@ function _createMails(){
             isShowingMore: false,
             sentAt : 1551133910276,
             type: 'inbox',
+            from:'Nadav'
+
         },
         {
             id: makeId(),
@@ -235,6 +274,7 @@ function _createMails(){
             isShowingMore: false,
             sentAt : 1551133493016,
             type: 'starred',
+            from: 'Father'
         },
         {
             id: makeId(),
@@ -244,6 +284,7 @@ function _createMails(){
             isShowingMore: false,
             sentAt : 1551133922216,
             type: 'inbox',
+            from: 'Noa'
         },
         {
             id: makeId(),
@@ -253,6 +294,7 @@ function _createMails(){
             isShowingMore: false,
             sentAt : 1551102910116,
             type: 'starred',
+            from: 'Itay'
         },
         {
             id: makeId(),
@@ -260,8 +302,9 @@ function _createMails(){
             body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor fugit delectus dolorum? Beatae id omnis voluptatum quibusdam, at ad vel aut modi alias quos dolor maxime aliquid non officia harum.',
             isRead: false,
             isShowingMore: false,
-            sentAt : 15511339769116,
+            sentAt : 1551102910100,
             type: 'inbox',
+            from: 'Gil'
         }
     ];
     return mails;

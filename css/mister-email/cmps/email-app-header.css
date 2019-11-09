@@ -56,6 +56,15 @@
     color: #3d00ac;
 }
 
+.inbox-link{
+    cursor: pointer;
+}
+.draft-link{
+    cursor: pointer;
+}
+.starred-link{
+    cursor: pointer;
+}
 
 .links-small-header{
     display: flex;

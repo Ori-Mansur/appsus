@@ -10,6 +10,7 @@ export default {
     <section class="email-details-container" v-if="email">
         <h2 class="subject-details">{{email.subject}}</h2>
         <h4>{{email.body}}</h4>
+        <h5>{{email.from}}</h5>
         <h6>Sent: {{new Date(email.sentAt)}}</h6>
         <div class="btn-details-container">
             <button class="btn-details" @click="returnToEmails">↩</button>
