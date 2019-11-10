@@ -5,8 +5,8 @@
     flex-direction: column;
     max-width: 100%;
     padding-top: 20px;
-    /* box-shadow: 0px 1px 0px #0000008a; */
     box-shadow: 1px 2px 0px #00000036;
+    cursor: pointer;
 }
 
 .unread-mail{
@@ -24,9 +24,10 @@
     margin-top:5px;
 }
 
-/* .showing{
-    background-color: #d1e3dd73;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    box-shadow: 0px 1px 2px #a5a2a2;
-} */
+.from-name{
+    padding-left: 5px;
+}
+.from-container{
+    text-shadow: 0px 0.5px 0.5px #44657d;
+    margin-bottom: 5px;
+}

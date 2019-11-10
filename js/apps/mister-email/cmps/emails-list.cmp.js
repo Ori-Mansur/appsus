@@ -18,7 +18,7 @@ export default {
         <div class="list-container-support">
         <ul class="email-list" v-for="email in emails" :key="email.id" :class="{showing: email.isShowingMore}">
             <email-preview @render-starred="emailsToShow"  @click.native="showMore(email.id)" :email="email"></email-preview>
-            <email-short @deleted="emailsToShow" v-if="email.isShowingMore" :email="email" :filter="filterBy"></email-short>
+            <email-short @deleted="emailsToShow" v-if="email.isShowingMore" :email="email" :filter="filterBy" :type="emailsType"></email-short>
         </ul>
         </div>
     </section>`,

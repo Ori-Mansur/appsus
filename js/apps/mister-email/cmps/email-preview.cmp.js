@@ -10,8 +10,9 @@ export default {
     props:["email"],
     template:`
     <li  class="mail-container" :class="isRead">
+        <p class="from-container">From: <span class="from-name">{{isEmptySender}}</span></p>
         <p class="subject">{{isEmptySubject}}</p>
-        <long-text @edit-draft="editDraftMail" @toggle-read="toggleRead" @starred="makeEmailStarred" class="body" :txt="isEmptyBody" :valid="isValid" :read="email.isRead" :starred="isStarred"></long-text>
+        <long-text @edit-draft="editDraftMail" @toggle-read="toggleRead" @starred="makeEmailStarred" class="body" :txt="isEmptyBody" :valid="isValid" :read="email.isRead" :starred="isStarred" :link="email.isLink"></long-text>
     </li>`
     ,
     computed: {
@@ -22,6 +23,10 @@ export default {
         isEmptyBody(){
             if(!this.email.body) return 'Missing content...'
             return this.email.body
+        },
+        isEmptySender(){
+            if(!this.email.from) return 'No sender'
+            return this.email.from
         },
         isRead(){
             return{'unread-mail': !this.email.isRead};

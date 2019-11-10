@@ -10,6 +10,7 @@ export default {
         <p class="new-msg">New Message</p>
         <form @submit.prevent="sendEmail">
             <input class="send-to" type="text" placeholder="To: Myself">
+            <input class="from-compose" type="text" placeholder="From:" v-model="email.from">
             <input class="subject-compose" type="text" placeholder="Subject:" v-model="email.subject">
             <textarea class="body-compose" ref="inputBody" cols="30" rows="10" v-model="email.body"></textarea>
             <button class="send-compose">Send</button>
@@ -21,7 +22,8 @@ export default {
         return {
             email: {
                 subject: '',
-                body: ''
+                body: '',
+                from: ''
             }
         }
     },
@@ -45,7 +47,7 @@ export default {
                         var msg;
                         if(this.email.type === 'draft'){
                             msg = {
-                                txt: 'Email was sent to draft',
+                                txt: 'Invalid Email! - stored in draft.',
                                 type: 'draft'
                             }
                         }
@@ -65,7 +67,7 @@ export default {
             } 
         ,
         checkEmailData(){
-            if(!this.email.subject || !this.email.body) return 'draft';
+            if(!this.email.subject || !this.email.body ||!this.email.from) return 'draft';
             return 'inbox';  
         },
         returnToInbox(){
@@ -82,6 +84,8 @@ export default {
         if(emailId && isEditing)
         emailService.getEmailById(emailId)
             .then(email =>{
+                    if(!email.from) this.email.from = 'Edit: Sender'
+                    else this.email.from = email.from;
                     this.email.subject = 'Edit: '+email.subject;
                     this.email.body = email.body;
                     this.email.id = email.id

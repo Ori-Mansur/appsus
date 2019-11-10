@@ -30,7 +30,6 @@ li {
     border-radius: 5px;
     text-align: center;
     text-transform: capitalize;
-    /* box-shadow: 10px 10px 12px 1px rgba(0, 0, 0, 0.75); */
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
 }
 
