@@ -37,26 +37,29 @@ export default {
     methods: {
         updateNote(details) {
             keepService.updateNote(details)
-            .then(msg=>{
-                let timerInterval
-            Swal.fire({
-            title: msg,
-            timer: 2000,
-            onBeforeOpen: () => {
-            Swal.showLoading()
-            },
-            onClose: () => {
-            clearInterval(timerInterval)
-             }
-            })
-                eventBus.$emit('show-msg',{txt:msg,type:'starred'})
-            })
+                .then(msg => {
+                    if (msg.includes('email')) {
+
+                        let timerInterval
+                        Swal.fire({
+                            title: msg,
+                            timer: 2000,
+                            onBeforeOpen: () => {
+                                Swal.showLoading()
+                            },
+                            onClose: () => {
+                                clearInterval(timerInterval)
+                            }
+                        })
+                    }
+                    eventBus.$emit('show-msg', { txt: msg, type: 'starred' })
+                })
         },
         markTodo(todoDetails) {
             keepService.markTodo(todoDetails)
-            .then(()=>{
-                eventBus.$emit('show-msg',{txt:'todo has been mark/unmark',type:'starred'})
-            })
+                .then(() => {
+                    eventBus.$emit('show-msg', { txt: 'todo has been mark/unmark', type: 'starred' })
+                })
         }
     },
     created() {
@@ -70,7 +73,7 @@ export default {
             var otherNotes = this.notes.filter(note => note.pin !== true)
             if (!this.filterBy) return otherNotes
             var regex = new RegExp(`${this.filterBy.type}`, 'i');
-            if (this.filterBy.type==='title') {
+            if (this.filterBy.type === 'title') {
                 regex = new RegExp(`${this.filterBy.title}`, 'i');
                 return otherNotes.filter(note =>
                     regex.test(note.title))

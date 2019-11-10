@@ -26,7 +26,7 @@ li {
 }
 
 .book-list li {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 5px;
     text-align: center;
     text-transform: capitalize;
@@ -107,6 +107,3 @@ li {
         gap: 15px
     }
 }
-
-
-

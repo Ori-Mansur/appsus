@@ -5,7 +5,7 @@ export default {
     props: ['type'],
     template: `
     <section class="select-note-type">  
-        <button class="type-btn" :class="textNote" @click="setNoteType('text-note')">
+        <button class="type-btn btn-font" :class="textNote" @click="setNoteType('text-note')">
             <img src="img/font.png">
         </button>
         <button class="type-btn" :class="noteImg" @click="setNoteType('note-img')">

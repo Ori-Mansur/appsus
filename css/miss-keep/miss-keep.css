@@ -3,7 +3,7 @@
     width: fit-content;
     align-items: center;
     margin-bottom: 20px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
 }
 
@@ -51,16 +51,30 @@
     height: 80%;
 }
 
+.btn-font img {
+    height: 65%;
+}
+
 .input-note {
     height: 40px;
     border: none;
     width: 180px;
+    padding-left: 5px;
+}
+
+.input-note:focus {
+    outline: 1px solid rgba(0, 0, 0, 0.2)
 }
 
 .input-note-title {
     height: 40px;
     border: none;
     transition: 10s;
+    padding-left: 5px;
+}
+
+.input-note-title:focus {
+    outline: 1px solid rgba(0, 0, 0, 0.2)
 }
 
 .slide-fade-enter-active {
@@ -92,7 +106,7 @@
 }
 
 .add-note-action {
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
 }
 
 /* notes-preview */
@@ -111,7 +125,7 @@
 }
 
 .note-container {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 5px;
     margin-bottom: 10px;
     -webkit-column-break-inside: avoid;
@@ -156,7 +170,7 @@
     }
     .select-note-type {
         order: -1;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     }
     .input-note {
         width: 100%;
