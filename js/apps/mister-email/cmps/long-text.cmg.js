@@ -28,8 +28,6 @@ export default {
             else return this.txt
         },
         isEmailRead(){
-            // if(this.read) return '☖'
-            // return '☗'
             if(this.read) return true;
             return false
         },

@@ -50,23 +50,14 @@ export default {
               })
         },
         emailToKeep(email){
-            let timerInterval
             Swal.fire({
-            title: 'Sending Email to keep...',
-            timer: 2000,
-            onBeforeOpen: () => {
-            Swal.showLoading()
-            },
-            onClose: () => {
-            clearInterval(timerInterval)
-             }
-            })
+                position: 'center',
+                icon: 'success',
+                title: 'Your Email has been saved in notes',
+                showConfirmButton: false,
+                timer: 1500
+              })
             emailService.saveEmailToStorage(email)
-            var msg = {
-               txt: 'Email kept in notes!',
-               type: 'email-notes'
-            }
-            eventBus.$emit('show-msg',msg)
         },
     },
     computed:{
