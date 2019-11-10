@@ -14,10 +14,12 @@ export default {
         <transition name="slide-fade">
         <input v-show="note.info" v-model="note.title" class="input-note-title" type="type" placeholder="Give it a title..."/>
         </transition>
-        <div class="add-btn-conteiner"> 
+        <transition name="slide-fade">
+        <div class="add-btn-conteiner" v-show="note.info"> 
             <button class="add-btn select"@click="addNote">Add</button>
             <button v-if="note.id" class="add-btn select"@click="emptyNote">Cancel</button>
         </div>
+        </transition>
     </section>
     `,
     data() {
@@ -29,7 +31,7 @@ export default {
                 color: '',
                 id: '',
                 pin: false,
-                pos:''
+                pos: ''
             }
         }
     },
@@ -44,9 +46,15 @@ export default {
     methods: {
         addNote() {
             if (this.note.id) keepService.editNote(this.note)
-                .then(() => this.emptyNote())
+                .then(() => {
+                    this.emptyNote()
+                    eventBus.$emit('show-msg', { txt: 'Note was edit', type: 'starred' })
+                })
             else keepService.addNewNote(this.note)
-                .then(() => this.emptyNote())
+                .then(() => {
+                    this.emptyNote()
+                    eventBus.$emit('show-msg', { txt: 'Note added', type: 'starred' })
+                })
         },
         setNoteType(type) {
             this.note.type = type
@@ -65,7 +73,7 @@ export default {
                 color: '',
                 id: '',
                 pin: false,
-                pos:''
+                pos: ''
             }
         }
     },
@@ -77,7 +85,7 @@ export default {
             else if (this.note.type === 'note-audio') return `Enter audio URL...`
             else if (this.note.type === 'note-todos') return `Enter comma separated list...`
             else if (this.note.type === 'note-map') return `Say somethig about this loc...`
-            else if (this.note.type === 'note-map-fram') return `Ener map location URL ...`
+            else if (this.note.type === 'note-map-fram') return `Ener map location embed URL ...`
         }
     },
     components: {

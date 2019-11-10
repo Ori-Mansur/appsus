@@ -87,7 +87,7 @@ nav {
     margin: 0 auto;
     padding-left: 10px;
     padding-right: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -129,7 +129,7 @@ nav {
     font-family: PlayfairDisplay;
     font-size: 40px;
     margin-bottom: 0;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .sec-sentence {
@@ -172,7 +172,8 @@ nav {
     background-color: #000000;
     color: white;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-footer li {
@@ -226,6 +227,13 @@ nav {
     font-family: PlayfairDisplay;
     font-size: 22px;
     line-height: 38px;
+}
+
+.note-modal {
+    background-color: #00b0ff;
+    position: fixed;
+    height: 100px;
+    top: 50%;
 }
 
 @media screen and (max-width: 960px) {
@@ -305,41 +313,38 @@ nav {
     align-items: center;
 }
 
-
 /*---------------book------------------*/
-
 
 .book-details ul {
     column-count: 0;
 }
 
-.book-details img{
+.book-details img {
     width: 100%;
     height: 330px;
 }
 
-.book-details-container{
+.book-details-container {
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-around;
 }
 
-
-.img-links-container{
+.img-links-container {
     text-align: center;
 }
-.next-prev{
+
+.next-prev {
     display: flex;
     flex-direction: row;
 }
 
-
-.book-details{
+.book-details {
     padding-top: 10px;
     background-color: #5185ba3d;
 }
 
-.add-review form{
+.add-review form {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -347,30 +352,31 @@ nav {
     width: 70%;
 }
 
-.review-input{
+.review-input {
     padding: 10px;
     font-family: Montserrat;
 }
 
-.review-select{
+.review-select {
     padding: 10px;
 }
 
-.review-txtarea{
+.review-txtarea {
     font-family: Montserrat;
 }
 
-.book-item-container{
+.book-item-container {
     display: flex;
     flex-direction: column;
 }
-.btn-review{
+
+.btn-review {
     padding: 10px;
-    border-style:none;
+    border-style: none;
     background-color: white;
 }
 
-.book-item-container{
+.book-item-container {
     display: flex;
     align-self: flex-start;
 }

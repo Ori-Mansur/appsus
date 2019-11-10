@@ -59,7 +59,7 @@ export default {
             var otherNotes = this.notes.filter(note => note.pin !== true)
             if (!this.filterBy) return otherNotes
             var regex = new RegExp(`${this.filterBy.type}`, 'i');
-            if (!this.filterBy.type) {
+            if (this.filterBy.type==='title') {
                 regex = new RegExp(`${this.filterBy.title}`, 'i');
                 return otherNotes.filter(note =>
                     regex.test(note.title))

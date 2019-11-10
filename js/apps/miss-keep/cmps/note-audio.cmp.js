@@ -5,6 +5,7 @@ export default {
     props: ['note'],
     template: `
         <section class="auido-note note-container" :style="{'background-color':note.color}">
+        <h4>{{note.title}}</h4>
            <audio controls>
             <source :src="note.info" type="audio/mpeg">
             </audio>

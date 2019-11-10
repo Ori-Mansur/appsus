@@ -4,7 +4,6 @@ export default{
 }
 
 var map;
-var gLatlng={lat:'',lng:''}
 
 function initMap( ) {
     console.log('InitMap');

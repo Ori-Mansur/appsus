@@ -6,7 +6,7 @@ export default {
     props: ['note'],
     template: `
           <section class="img-note note-container" :style="{'background-color':note.color}">
-
+          <h4>{{note.title}}</h4>
             {{note.info}}
             <div class="map" ref="myMap"></div>
             

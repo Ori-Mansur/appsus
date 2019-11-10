@@ -15,5 +15,5 @@ export default {
             <img src="img/photo-1522071820081-009f0129c71c.jpg" class="about-main-img">
         </div>
     </section>
-    `
+    `,
 }
