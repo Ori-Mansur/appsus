@@ -178,4 +178,7 @@
     .add-btn {
         width: 40%;
     }
+    .notes-preview{
+        width: 100%;
+    }
 }

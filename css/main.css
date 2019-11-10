@@ -152,12 +152,19 @@ nav {
 }
 
 .main-card-a {
-    display: block;
+    display: flex;
+    flex-direction: column;
     height: 340px;
     width: 270px;
     background-color: white;
     margin-bottom: 20px;
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+}
+.main-card-a div{
+padding-top: 40px;
+padding-left: 10px;
+padding-right: 10px;
+padding-bottom: 30px;
 }
 
 .main-card-a:not(:first-child) {
