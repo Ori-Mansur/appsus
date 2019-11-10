@@ -19,7 +19,7 @@
 
 .email-app-header-container nav a {
     text-decoration: none;
-    color: black;
+    /* color: black; */
     font-size: large;
     font-weight: 600;
 }
@@ -46,23 +46,29 @@
 }
 
 .inbox-link:focus , .inbox-link:active{
-    color: #3d00ac;
+    color: #ffffff;
+    text-shadow: 0px -2px 5px #000000c2;;
 }
 .draft-link:focus , .draft-link:active{
-    color: #3d00ac;
+    color: #ffffff;
+    text-shadow: 0px -2px 5px #000000c2;;
 }
 .starred-link:focus , .starred-link:active{
-    color: #3d00ac;
+    color: #ffffff;
+    text-shadow: 0px -2px 5px #000000c2;;
 }
 
 .inbox-link{
     cursor: pointer;
+    color:#341b4e
 }
 .draft-link{
     cursor: pointer;
+    color:#341b4e
 }
 .starred-link{
     cursor: pointer;
+    color:#341b4e
 }
 
 .links-small-header{
@@ -107,4 +113,11 @@
 .links-small-header a{
     color: #011c32;
 
+}
+
+
+
+.inbox-link-first{
+    color: #ffffff;
+    text-shadow: 0px -2px 5px #000000c2;;
 }

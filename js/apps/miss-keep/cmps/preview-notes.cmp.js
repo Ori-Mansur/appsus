@@ -38,6 +38,17 @@ export default {
         updateNote(details) {
             keepService.updateNote(details)
             .then(msg=>{
+                let timerInterval
+            Swal.fire({
+            title: msg,
+            timer: 2000,
+            onBeforeOpen: () => {
+            Swal.showLoading()
+            },
+            onClose: () => {
+            clearInterval(timerInterval)
+             }
+            })
                 eventBus.$emit('show-msg',{txt:msg,type:'starred'})
             })
         },
