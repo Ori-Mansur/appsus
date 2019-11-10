@@ -69,24 +69,29 @@ function addNewNote(note) {
             return { id: utilsService.makeId(3), isDone: false, todo }
         })
     }
-    if (note.type === 'note-video'){
-        newNote.info =`https://www.youtube.com/embed/`+ _getParameterByName('v', note.info)
-    } 
+    if (note.type === 'note-video') {
+        newNote.info = `https://www.youtube.com/embed/` + _getParameterByName('v', note.info)
+    }
     newNote.id = utilsService.makeId(3)
     gNotes.unshift(newNote)
     return Promise.resolve()
 }
 
 function updateNote(details) {
+    var msg=''
     if (details.type === 'remove') removeNote(details)
+        .then(() => msg = `Note has been remove`)
     else if (details.type === 'pin') pinNote(details)
+        .then(() => msg = `Note has been pinned`)
     else if (details.type === 'send') sendNote(details)
+        .then(() => msg = `Note has been send to email`)
     else changeNoteColor(details)
-    return Promise.resolve()
+        .then(() => msg = `Note color has been change`)
+    return Promise.resolve(msg)
 }
-function sendNote(details){
+function sendNote(details) {
     var note = gNotes.find(note => details.id === note.id)
-    utilsService.store('note toEmail',note)
+    utilsService.store('note toEmail', note)
     return Promise.resolve()
 }
 function pinNote(details) {
