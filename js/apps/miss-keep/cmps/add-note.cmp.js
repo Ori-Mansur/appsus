@@ -9,18 +9,15 @@ export default {
     <section class="add-note">
         <div class="add-note-action flex align-center">
             <input class="input-note" type="type" v-model="note.info" :placeholder="[[instructions]]"/>
-          <select-notetype :type="note.type" @setType="setNoteType"></select-notetype>
-            
+            <select-notetype :type="note.type" @setType="setNoteType"></select-notetype> 
         </div> 
         <transition name="slide-fade">
         <input v-show="note.info" v-model="note.title" class="input-note-title" type="type" placeholder="Give it a title..."/>
         </transition>
         <div class="add-btn-conteiner"> 
             <button class="add-btn select"@click="addNote">Add</button>
-            
             <button v-if="note.id" class="add-btn select"@click="emptyNote">Cancel</button>
-</div>
-    
+        </div>
     </section>
     `,
     data() {
@@ -31,7 +28,8 @@ export default {
                 info: '',
                 color: '',
                 id: '',
-                pin: false
+                pin: false,
+                pos:''
             }
         }
     },
@@ -66,7 +64,8 @@ export default {
                 info: '',
                 color: '',
                 id: '',
-                pin: false
+                pin: false,
+                pos:''
             }
         }
     },
@@ -77,7 +76,8 @@ export default {
             else if (this.note.type === 'note-video') return `Enter video URL...`
             else if (this.note.type === 'note-audio') return `Enter audio URL...`
             else if (this.note.type === 'note-todos') return `Enter comma separated list...`
-            else if (this.note.type === 'note-map') return `What's on your mind...`
+            else if (this.note.type === 'note-map') return `Say somethig about this loc...`
+            else if (this.note.type === 'note-map-fram') return `Ener map location URL ...`
         }
     },
     components: {

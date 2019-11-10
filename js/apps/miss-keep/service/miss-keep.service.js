@@ -15,7 +15,8 @@ var gNotes = [{
     title: 'important',
     info: 'blabla',
     color: 'white',
-    pin: false
+    pin: false,
+    pos: null
 
 },
 {
@@ -24,7 +25,8 @@ var gNotes = [{
     title: 'car',
     info: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl3KjW6-2hhv4GMdYLAqC3kRS3GFE-dy46Q1tCFJ8sq2XgSitt&s',
     color: 'white',
-    pin: false
+    pin: false,
+    pos: null
 },
 {
     id: 103,
@@ -32,7 +34,8 @@ var gNotes = [{
     title: '6',
     info: 'https://www.youtube.com/embed/iSgUMPHQEWw',
     color: 'white',
-    pin: false
+    pin: false,
+    pos: null
 },
 ]
 
@@ -42,10 +45,11 @@ function getNotes() {
     if (notesFromEmail) {
         getNoteById(notesFromEmail.id)
             .catch(() => addEmailNote(notesFromEmail))
-
     }
-
     var notes = utilsService.load('notes')
+    console.log('storeg', notes);
+
+    if (notes) gNotes = notes
     return gNotes
 }
 function getNoteById(id) {
@@ -59,11 +63,14 @@ function addEmailNote(email) {
         id: email.id, type: 'note-email', title: 'email',
         info: [email.subject, email.body], color: 'greenyellow', pin: false
     })
+    utilsService.store('notes', gNotes)
 
 }
 
 function addNewNote(note) {
-    let newNote = note
+    var newNote = note
+    console.log(newNote);
+    
     if (note.type === 'note-todos') {
         newNote.info = note.info.split(',').map(todo => {
             return { id: utilsService.makeId(3), isDone: false, todo }
@@ -72,21 +79,46 @@ function addNewNote(note) {
     if (note.type === 'note-video') {
         newNote.info = `https://www.youtube.com/embed/` + _getParameterByName('v', note.info)
     }
+    if (note.type === 'note-map') {
+        getPosition()
+            .then(res => {
+                newNote.pos = { lat: res.coords.latitude, lng: res.coords.longitude }
+                utilsService.store('notes', gNotes)
+            })
+    }
     newNote.id = utilsService.makeId(3)
     gNotes.unshift(newNote)
+    utilsService.store('notes', gNotes)
     return Promise.resolve()
+}
+function getPosition() {
+    console.log('Getting Pos');
+
+    return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject)
+
+    })
 }
 
 function updateNote(details) {
-    var msg=''
-    if (details.type === 'remove') removeNote(details)
-        .then(() => msg = `Note has been remove`)
-    else if (details.type === 'pin') pinNote(details)
-        .then(() => msg = `Note has been pinned`)
-    else if (details.type === 'send') sendNote(details)
-        .then(() => msg = `Note has been send to email`)
-    else changeNoteColor(details)
-        .then(() => msg = `Note color has been change`)
+    var msg = ''
+    if (details.type === 'remove') {
+        removeNote(details)
+        msg = `Note has been remove`
+    }
+    else if (details.type === 'pin') {
+        pinNote(details)
+        msg = `Note has been pinned/unpinned`
+    }
+    else if (details.type === 'send') {
+        sendNote(details)
+        msg = `Note has been send to email`
+    }
+    else {
+        changeNoteColor(details)
+        msg = `Note color has been change`
+    }
+    utilsService.store('notes', gNotes)
     return Promise.resolve(msg)
 }
 function sendNote(details) {
@@ -118,6 +150,7 @@ function markTodo(todoDetails) {
     var note = gNotes.find(note => note.id === todoDetails.noteId)
     var todo = note.info.find(todo => todo.id === todoDetails.todoId)
     todo.isDone = !todo.isDone
+    utilsService.store('notes', gNotes)
     return Promise.resolve()
 }
 

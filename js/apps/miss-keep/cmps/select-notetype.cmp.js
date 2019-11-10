@@ -26,6 +26,9 @@ export default {
         <button class="type-btn" :class="noteMap"@click="setNoteType('note-map')">
             <img src="img/pin.png">
         </button>
+        <button class="type-btn" :class="noteMapFram"@click="setNoteType('note-map-fram')">
+            <img src="img/map.png">
+        </button>
     </section>
     `,
     methods: {
@@ -51,6 +54,9 @@ export default {
         },
         noteMap() {
             return { select: this.type === 'note-map' }
+        },
+        noteMapFram() {
+            return { select: this.type === 'note-map-fram' }
         },
     }
 

@@ -6,8 +6,11 @@ import { eventBus } from '../../../general-service/event-bus-service.js'
 import textNote from '../cmps/text-note.cmp.js'
 import noteImg from '../cmps/note-img.cmp.js'
 import noteVideo from '../cmps/note-video.cmp.js'
+import noteAudio from '../cmps/note-audio.cmp.js'
 import noteTodos from '../cmps/note-todos.cmp.js'
 import noteEmail from '../cmps/note-email.cmp.js'
+import noteMap from '../cmps/note-map.cmp.js'
+import noteMapFram from '../cmps/note-map-fram.cmp.js'
 export default {
     template: `
     <section class="notes-preview">
@@ -35,13 +38,13 @@ export default {
         updateNote(details) {
             keepService.updateNote(details)
             .then(msg=>{
-                eventBus.$emit('show-msg',msg)
+                eventBus.$emit('show-msg',{txt:msg,type:'starred'})
             })
         },
         markTodo(todoDetails) {
             keepService.markTodo(todoDetails)
             .then(()=>{
-                eventBus.$emit('show-msg','todo has been mark/unmark')
+                eventBus.$emit('show-msg',{txt:'todo has been mark/unmark',type:'starred'})
             })
         }
     },
@@ -75,6 +78,9 @@ export default {
         noteImg,
         noteVideo,
         noteTodos,
-        noteEmail
+        noteEmail,
+        noteAudio,
+        noteMap,
+        noteMapFram
     }
 }
