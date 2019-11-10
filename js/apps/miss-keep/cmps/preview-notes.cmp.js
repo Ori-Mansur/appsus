@@ -34,9 +34,15 @@ export default {
     methods: {
         updateNote(details) {
             keepService.updateNote(details)
+            .then(msg=>{
+                eventBus.$emit('show-msg',msg)
+            })
         },
         markTodo(todoDetails) {
             keepService.markTodo(todoDetails)
+            .then(()=>{
+                eventBus.$emit('show-msg','todo has been mark/unmark')
+            })
         }
     },
     created() {

@@ -25,11 +25,11 @@ export default {
     },
     methods: {
         toggleMenu() {
-            if (screen.width > 630) return
+            if (window.innerWidth > 630) return
             this.isMenu = !this.isMenu
         }
     },
     created() {
-        if (screen.width > 630) this.isMenu = true
+        if (window.innerWidth > 630) this.isMenu = true
     },
 }
