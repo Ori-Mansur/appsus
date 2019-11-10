@@ -3,7 +3,7 @@
 export default {
     props: ['review'],
     template: `
-    <li>
+    <li class="book-item-container">
         Name: {{review.name}} Publish AT: {{review.date}} 
         <p>Review: {{review.reviewTxt}}</p>
         <h4>Rate: {{review.rate}}</h4>

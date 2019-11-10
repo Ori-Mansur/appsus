@@ -72,6 +72,10 @@
     .email-compose-container{
         position: absolute;
         top: 150px;
-
+    }
+    .return-compose{
+        margin-top: 6px;
+        padding: 1px;
+        height: 0;
     }
 }

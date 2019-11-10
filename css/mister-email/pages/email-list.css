@@ -23,7 +23,7 @@
 }
 
 .showing{  
-    background-color: #8ebdad63;
+    background-color: #76bdff45;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     box-shadow: 0px 1px 2px #a5a2a2;
@@ -66,8 +66,8 @@
    
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    /* background: red;  */
     background-image: linear-gradient(to bottom, #86d9ffd3 , rgba(127, 168, 243, 0.835));
     border-radius: 10px; 
   }
  
+

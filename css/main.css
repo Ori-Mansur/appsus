@@ -304,3 +304,73 @@ nav {
 .flex.align-center {
     align-items: center;
 }
+
+
+/*---------------book------------------*/
+
+
+.book-details ul {
+    column-count: 0;
+}
+
+.book-details img{
+    width: 100%;
+    height: 330px;
+}
+
+.book-details-container{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+
+
+.img-links-container{
+    text-align: center;
+}
+.next-prev{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.book-details{
+    padding-top: 10px;
+    background-color: #5185ba3d;
+}
+
+.add-review form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 70%;
+}
+
+.review-input{
+    padding: 10px;
+    font-family: Montserrat;
+}
+
+.review-select{
+    padding: 10px;
+}
+
+.review-txtarea{
+    font-family: Montserrat;
+}
+
+.book-item-container{
+    display: flex;
+    flex-direction: column;
+}
+.btn-review{
+    padding: 10px;
+    border-style:none;
+    background-color: white;
+}
+
+.book-item-container{
+    display: flex;
+    align-self: flex-start;
+}

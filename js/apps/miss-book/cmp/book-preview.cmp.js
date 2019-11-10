@@ -3,7 +3,7 @@
 export default {
     props: ['book'],
     template: `
-    <li>
+    <li class="book-preview-container">
         <img :src="book.thumbnail" class="book-img">
     <h4>Name:</h4> {{bookTitle}} 
     <h4>Price:</h4>{{bookPrice}}  

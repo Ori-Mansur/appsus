@@ -7,13 +7,13 @@ export default {
     <section class="email-filter-container">
         <div v-if="checkWidth" class="filter-container-big">
         <input class="email-search" type ="text" placeholder="Search email" v-model="filterBy.searchKey"/>
-        <label for="all">All</label>
+        <label :class="all" for="all">All</label>
         <input id="all"type ="radio" hidden value="allEmails" v-model="filterBy.searchType"/>
-        <label for="read">Read</label>
+        <label :class="read" for="read">Read</label>
         <input id="read" hidden type ="radio" value="readEmails" v-model="filterBy.searchType"/>
-        <label for="unread">Unread</label>
+        <label :class="unread" for="unread">Unread</label>
         <input id="unread" hidden type="radio" value="unreadEmails" v-model="filterBy.searchType"/>
-        Sort<select v-model ="filterBy.sortBy" value="sortBy">
+        <select v-model ="filterBy.sortBy" value="sortBy">
             <option value="date">Date</option>
             <option value="title">Title</option>
         </select>
@@ -49,6 +49,16 @@ export default {
                 this.filterBy.sortBy ='date'
                 return false;
             }
+            
+        },
+        all(){
+            return{'opt-filter':this.filterBy.searchType === 'allEmails'}
+        },
+        read(){
+            return{'opt-filter':this.filterBy.searchType === 'readEmails'} 
+        },
+        unread(){
+            return{'opt-filter':this.filterBy.searchType === 'unreadEmails'}
             
         }
     },
