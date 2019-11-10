@@ -7,17 +7,20 @@ export default {
     template: `
     <section class="add-review">
     <form @submit.prevent="addReview">
-        <input type="text" v-model="review.name" ref="inputReview">
-        <input type="date" v-model="review.date">
-        <select v-model="review.rate">
+        <p>Add review</p>
+        <div>
+        <input class="review-input" placeholder="Enter your name" type="text" v-model="review.name" ref="inputReview">
+        <input class="review-input" type="date" v-model="review.date">
+        <select class="review-select" v-model="review.rate">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
         </select>
-        <button>Add</button>
-        <textarea cols="51" rows="7" v-model="review.reviewTxt"></textarea>
+        </div>
+        <textarea class="review-txtarea" cols="51" rows="7" v-model="review.reviewTxt" placeholder="What do you think?"></textarea>
+        <button class="btn-review">Add</button>
     </form>
     <book-review v-for="currReview in book.reviews" :key="currReview.id" :review="currReview" @remove="deleteReview"></book-review>
 </section>
