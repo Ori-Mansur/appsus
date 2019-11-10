@@ -6,7 +6,7 @@ import {eventBus} from '../../../general-service/event-bus-service.js'
 
 
 export default {
-    props:['email','filter'],
+    props:['email','filter','type'],
     template:`
     <section class="emails-short-details-container">
         <p class="short-subject">{{email.subject}}</p>
@@ -17,7 +17,9 @@ export default {
             <!-- <button v-if="checkEmailType" class="email-read-details"><router-link v-if="email.type!== 'draft'" :to="'email/'+email.id" class="ignore-link">❐</router-link></button> -->
             <button v-if="checkEmailType" class="email-read-details">
                 <router-link v-if="email.type === 'inbox'" :to="'email/'+email.id" class="ignore-link">❐</router-link>
-                <router-link v-else-if="email.type === 'starred'" :to="email.id" class="ignore-link">❐</router-link>
+                <router-link v-else-if="email.type === 'starred' && type === 'inbox' " :to="'email/'+email.id" class="ignore-link">❐</router-link>
+                <router-link v-else="email.type === 'starred'" :to="email.id" class="ignore-link">❐</router-link>
+
             </button>
 
             <button v-if="email.type!== 'draft'" @click="emailToKeep(email)" class="email-note-details">📝</button>
@@ -52,7 +54,7 @@ export default {
         emailToKeep(email){
             emailService.saveEmailToStorage(email)
             var msg = {
-               txt: 'Email was sent to notes',
+               txt: 'Email kept in notes!',
                type: 'email-notes'
             }
             eventBus.$emit('show-msg',msg)

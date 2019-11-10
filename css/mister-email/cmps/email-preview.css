@@ -5,8 +5,8 @@
     flex-direction: column;
     max-width: 100%;
     padding-top: 20px;
-    /* box-shadow: 0px 1px 0px #0000008a; */
     box-shadow: 1px 2px 0px #00000036;
+    cursor: pointer;
 }
 
 .unread-mail{

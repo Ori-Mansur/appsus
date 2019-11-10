@@ -27,8 +27,8 @@ export default {
         isEmailRead(){
             // if(this.read) return '☖'
             // return '☗'
-            if(this.read) return '⚪';
-            return '⚫'
+            if(this.read) return '◯';
+            return '⚪'
         },
         isEmailStarred(){
             if(this.starred) return '☑'

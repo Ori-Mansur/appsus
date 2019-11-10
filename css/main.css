@@ -144,8 +144,6 @@ nav {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    /* grid-template-columns: auto auto auto; */
-    /* gap: 20px; */
 }
 
 .main-card-a {

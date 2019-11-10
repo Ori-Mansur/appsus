@@ -47,7 +47,7 @@ export default {
                         var msg;
                         if(this.email.type === 'draft'){
                             msg = {
-                                txt: 'Email was sent to draft',
+                                txt: 'Invalid Email! - stored in draft.',
                                 type: 'draft'
                             }
                         }
