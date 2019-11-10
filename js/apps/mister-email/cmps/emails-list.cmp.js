@@ -59,13 +59,6 @@ export default {
                     })
             } 
         },
-        showStarred(){
-            console.log('!!!');
-            
-        },
-        // checkUnread(isRead){   
-        //     if(!isRead) return '#ffffff69';
-        // }
     },
 
     created(){
