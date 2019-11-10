@@ -7,7 +7,6 @@ export default {
     <div class="main-header">
     <h2 class="logo">APPSUS</h2>
     <button @click="toggleMenu" class="main-nav-btn">☰</button>
-    
     <nav v-show="isMenu">
         <router-link to="/" class="main-nav-a" exact @click.native="toggleMenu">Home</router-link> 
         <router-link to="/email" class="main-nav-a" @click.native="toggleMenu">Email</router-link> 
@@ -27,6 +26,7 @@ export default {
         toggleMenu() {
             if (window.innerWidth > 630) return
             this.isMenu = !this.isMenu
+
         }
     },
     created() {
