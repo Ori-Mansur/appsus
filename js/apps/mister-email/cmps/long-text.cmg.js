@@ -12,8 +12,11 @@ export default {
         <p v-else>{{showTxt}}</p>
         <div class="long-text-btn-container">
             <button v-if="!show && !valid" @click.stop="editDraft" class="edit-btn-long-txt">✎</button>
-            <button v-if="!show && valid" @click.stop="makeStarred" class="btn-starred" v-bind:style="{ color: getStarredColor }">{{isEmailStarred}}</button>
-            <button v-if="!show && valid" @click.stop="readToggle" class="btn-read" v-bind:style="{ color: getUnreadColor }">{{isEmailRead}}</button>
+            <button v-if="!show && valid" title="Mark" @click.stop="makeStarred" class="btn-starred" v-bind:style="{ color: getStarredColor }">{{isEmailStarred}}</button>
+
+            <button v-if="!show && valid && isEmailRead" @click.stop="readToggle" class="btn-read" v-bind:style="{ color: getUnreadColor }"><i class="fa fa-envelope-open-o" aria-hidden="true"></i></button>
+            <button v-else-if="!show && valid && !isEmailRead" @click.stop="readToggle" class="btn-read" v-bind:style="{ color: getUnreadColor }"><i class="fa fa-envelope-o" aria-hidden="true"></i></button>
+
         </div>
     </section>
      `
@@ -27,12 +30,12 @@ export default {
         isEmailRead(){
             // if(this.read) return '☖'
             // return '☗'
-            if(this.read) return '◯';
-            return '⚪'
+            if(this.read) return true;
+            return false
         },
         isEmailStarred(){
-            if(this.starred) return '☑'
-            return '☐'
+            if(this.starred) return '✩'
+            return '⚬'
         },
         getStarredColor(){
             if(this.starred) return '#05031ffc'; 
