@@ -4,6 +4,7 @@
     align-items: center;
     margin-bottom: 20px;
     border: 1px solid black;
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
 }
 
 .type-btn {
@@ -53,6 +54,7 @@
 .input-note {
     height: 40px;
     border: none;
+    width: 180px;
 }
 
 .input-note-title {
@@ -124,6 +126,7 @@
     text-decoration: line-through;
 }
 
+
 @media screen and (max-width: 740px) {
     .pin-notes {
         column-count: 2;
@@ -139,5 +142,18 @@
     }
     .all-notes {
         column-count: 1;
+    }
+    .add-note-action{
+        flex-direction: column;
+    }
+    .select-note-type{
+        order: -1;
+        border-bottom: 1px solid black;
+    }
+    .input-note{
+        width: 100%;
+    }
+    .add-btn{
+        width: 40%;
     }
 }

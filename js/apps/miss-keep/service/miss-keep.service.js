@@ -14,7 +14,7 @@ var gNotes = [{
     type: 'text-note',
     title: 'important',
     info: 'blabla',
-    color: 'greenyellow',
+    color: 'white',
     pin: false
 
 },
@@ -23,15 +23,15 @@ var gNotes = [{
     type: 'note-img',
     title: 'car',
     info: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl3KjW6-2hhv4GMdYLAqC3kRS3GFE-dy46Q1tCFJ8sq2XgSitt&s',
-    color: 'greenyellow',
+    color: 'white',
     pin: false
 },
 {
     id: 103,
     type: 'note-video',
     title: '6',
-    info: 'iSgUMPHQEWw',
-    color: 'greenyellow',
+    info: 'https://www.youtube.com/embed/iSgUMPHQEWw',
+    color: 'white',
     pin: false
 },
 ]
@@ -69,7 +69,9 @@ function addNewNote(note) {
             return { id: utilsService.makeId(3), isDone: false, todo }
         })
     }
-    if (note.type === 'note-video') newNote.info = _getParameterByName('v', note.info)
+    if (note.type === 'note-video'){
+        newNote.info =`https://www.youtube.com/embed/`+ _getParameterByName('v', note.info)
+    } 
     newNote.id = utilsService.makeId(3)
     gNotes.unshift(newNote)
     return Promise.resolve()

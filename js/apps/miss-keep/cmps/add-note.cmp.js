@@ -2,32 +2,15 @@
 
 import keepService from "../service/miss-keep.service.js"
 import { eventBus } from '../../../general-service/event-bus-service.js'
-import tools from './tools.cmp.js'
+import selectNotetype from './select-notetype.cmp.js'
 
 export default {
     template: `
     <section class="add-note">
         <div class="add-note-action flex align-center">
             <input class="input-note" type="type" v-model="note.info" :placeholder="[[instructions]]"/>
-          
-            <button class="type-btn" :class="textNote" @click="setNoteType('text-note')">
-                <img src="img/font.png">
-            </button>
-            <button class="type-btn" :class="noteImg" @click="setNoteType('note-img')">
-                <img src="img/001-picture.png">
-            </button>
-            <button class="type-btn" :class="noteVideo" @click="setNoteType('note-video')">
-                <img src="img/002-youtube.png">
-            </button>
-            <button class="type-btn" :class="noteAudio" @click="setNoteType('note-audio')">
-                <img src="img/003-speaker.png">
-            </button>
-            <button class="type-btn" :class="noteTodos"@click="setNoteType('note-todos')">
-                <img src="img/004-menu.png">
-            </button>
-            <button class="type-btn" :class="noteMap"@click="setNoteType('note-map')">
-                <img src="img/pin.png">
-            </button>
+          <select-notetype :type="note.type" @setType="setNoteType"></select-notetype>
+            
         </div> 
         <transition name="slide-fade">
         <input v-show="note.info" v-model="note.title" class="input-note-title" type="type" placeholder="Give it a title..."/>
@@ -88,24 +71,6 @@ export default {
         }
     },
     computed: {
-        textNote() {
-            return { select: this.note.type === 'text-note' }
-        },
-        noteImg() {
-            return { select: this.note.type === 'note-img' }
-        },
-        noteVideo() {
-            return { select: this.note.type === 'note-video' }
-        },
-        noteAudio() {
-            return { select: this.note.type === 'note-audio' }
-        },
-        noteTodos() {
-            return { select: this.note.type === 'note-todos' }
-        },
-        noteMap() {
-            return { select: this.note.type === 'note-map' }
-        },
         instructions() {
             if (this.note.type === 'text-note') return `What's on your mind...`
             else if (this.note.type === 'note-img') return `Enter image URL...`
@@ -116,7 +81,7 @@ export default {
         }
     },
     components: {
-        tools
+        selectNotetype
     }
 
 }
