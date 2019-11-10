@@ -5,6 +5,7 @@ export default {
     props: ['note'],
     template: `
           <section class="todos-note note-container" :style="{'background-color':note.color}">
+          <h4>{{note.title}}</h4>
             <ul>
                 <li v-for="susject in note.info">
                     {{susject}}

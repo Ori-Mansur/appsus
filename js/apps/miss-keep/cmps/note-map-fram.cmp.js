@@ -6,7 +6,8 @@ export default {
     props: ['note'],
     template: `
           <section class="img-note note-container" :style="{'background-color':note.color}">
-            <iframe :src="note.info" width="200" height="200" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+          <h4>{{note.title}}</h4>
+            <iframe :src="note.info" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
           <tools :noteId="note.id" @update="updateNote"></tools>
           </section>
     `,
@@ -20,3 +21,6 @@ export default {
         tools
     }
 };
+
+
+

@@ -1,8 +1,5 @@
 'use strict'
 
-import keepService from "../service/miss-keep.service.js"
-import { eventBus } from '../../../general-service/event-bus-service.js'
-import tools from './tools.cmp.js'
 
 export default {
     props: ['type'],

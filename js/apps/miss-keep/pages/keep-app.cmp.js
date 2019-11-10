@@ -8,8 +8,7 @@ import userMsg from '../../../general-cmps/user-nsg-general.cmp.js'
 export default {
     template: `
     <section class="keep-app container">
-    <user-msg></user-msg>
-        <h1>Keep App</h1>
+    <user-msg class="note-modal"></user-msg>
         <filter-notes></filter-notes>
         <add-note></add-note>
 

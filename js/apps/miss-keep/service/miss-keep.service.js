@@ -13,7 +13,7 @@ var gNotes = [{
     id: 101,
     type: 'text-note',
     title: 'important',
-    info: 'blabla',
+    info: 'Appsus sprint 3',
     color: 'white',
     pin: false,
     pos: null
@@ -70,7 +70,7 @@ function addEmailNote(email) {
 function addNewNote(note) {
     var newNote = note
     console.log(newNote);
-    
+
     if (note.type === 'note-todos') {
         newNote.info = note.info.split(',').map(todo => {
             return { id: utilsService.makeId(3), isDone: false, todo }
@@ -86,6 +86,7 @@ function addNewNote(note) {
                 utilsService.store('notes', gNotes)
             })
     }
+    if (note.type === 'note-map-fram') newNote.info = note.info.split('"')[1]
     newNote.id = utilsService.makeId(3)
     gNotes.unshift(newNote)
     utilsService.store('notes', gNotes)

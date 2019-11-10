@@ -6,10 +6,16 @@ export default {
     template: `
     <section class="notes-filter">
     <h2>Search Note</h2>
-        <input type="text" @input="setFilter" v-model="filterBy[select]" :placeholder="searchBy">
-        <select v-model="select">
-        <option value="type">Type</option>
+        <input type="text" @input="setFilter" v-model="filterBy.title" :placeholder="searchBy">
+        <select v-model="filterBy.type" @change="setFilter">
         <option value="title">Title</option>
+        <option value="text">Text</option>
+        <option value="img">Image</option>
+        <option value="video">Video</option>
+        <option value="audio">Audio</option>
+        <option value="todos">Todos</option>
+        <option value="map">Map</option>
+        <option value="map-fram">Map frame</option>
     </select>
     </section>
     `,
@@ -17,9 +23,8 @@ export default {
         return {
             filterBy: {
                 title: '',
-                type: '',
+                type: 'title'
             },
-            select: 'type'
         }
     },
     methods: {
@@ -29,7 +34,7 @@ export default {
     },
     computed: {
         searchBy() {
-            return `Search by ${this.select}`
+            return `Search by ${this.filterBy.type}`
         }
     },
     created() {
