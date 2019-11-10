@@ -25,6 +25,7 @@ export default {
     },
     methods: {
         toggleMenu() {
+            if (screen.width > 630) return
             this.isMenu = !this.isMenu
         }
     },
